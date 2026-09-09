@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FermentBites – ab November 2026</title>
-  <meta name="description" content="FermentBites bringt next generation Mikrobiom-Gesundheit auf den Tisch. Trag dich jetzt ein und sei von Anfang an dabei.">
+  <meta name="description" content="FermentBites bringt next generation Mikrobiom-Nutrition auf den Tisch. Trag dich jetzt ein und sei von Anfang an dabei.">
   <meta property="og:title" content="FermentBites – ab November 2026">
-  <meta property="og:description" content="Next generation Mikrobiom-Gesundheit. Ab November 2026 erhältlich.">
+  <meta property="og:description" content="Next generation Mikrobiom-Nutrition. Ab November 2026 erhältlich.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#7a2e1f">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -124,11 +124,29 @@
     text-transform:uppercase;
 }
 
+  .usp-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.6rem;
+  }
+  .usp-pill{
+    display:inline-flex;
+    align-items:center;
+    background:rgba(217,234,114,0.15);
+    border:1px solid rgba(217,234,114,0.55);
+    color:var(--lime);
+    border-radius:999px;
+    padding:0.45rem 1rem;
+    font-size:0.85rem;
+    font-weight:700;
+  }
+
   @media (max-width:860px){
     .hero-grid{grid-template-columns:1fr;text-align:center;}
     .hero-inner{align-items:center;}
     .hero-visual{order:-1;margin-bottom:0.5rem;}
     .poster-img{max-width:280px;}
+    .usp-row{justify-content:center;}
       }
 
   /* ---------- HERO CTA ---------- */
@@ -242,6 +260,12 @@
     line-height:1.5;
     color:#5a4a3a;
     margin:0;
+  }
+  .facts-disclaimer{
+    font-size:0.76rem;
+    color:#8a7a68;
+    margin:0.9rem 0 0;
+    text-align:center;
   }
   @media (max-width:860px){
     .science-facts{grid-template-columns:1fr 1fr;}
@@ -699,6 +723,12 @@
         <img class="wordmark-img" src="images/wordmark.png" alt="FermentBites">
         <p class="intro">FermentBites bringt Next-Level Mikrobiom-Nutrition auf den Tisch – wissenschaftlich entwickelt in Kooperation mit dem Fraunhofer IVV, alltagstauglich und ganz ohne Optimierungswahn.</p>
 
+      <div class="usp-row">
+        <span class="usp-pill">Vegan</span>
+        <span class="usp-pill">Ohne Zuckerzusatz</span>
+        <span class="usp-pill">Glutenfrei</span>
+      </div>
+
       <a class="cta-btn" href="#signup">Als Erste:r Bescheid bekommen</a>
 
       <div class="socials">
@@ -750,6 +780,7 @@
         <p>Enthält vorgeformte SCFAs, darunter &gt;&nbsp;1,5&nbsp;mg Acetat/g und &gt;&nbsp;0,5&nbsp;mg Butyrat/g.</p>
       </div>
     </div>
+    <p class="facts-disclaimer">Alle Angaben beziehen sich auf unseren Fermentationskomplex als Zutat, nicht auf ein einzelnes FermentBites-Gummy.</p>
   </div>
 </section>
 
@@ -781,8 +812,8 @@
       <div class="science-feature">
         <span class="science-feature-dot"></span>
         <div>
-          <strong>Von der Monash University als Low FODMAP zertifiziert</strong>
-          <span>Keine Blähungen, keine Krämpfe</span>
+          <strong>Fermentationskomplex von der Monash University als Low FODMAP zertifiziert</strong>
+          <span>Strenge Kohlenhydrat-Analyse, unabhängig bestätigt</span>
         </div>
       </div>
       <div class="science-feature">
@@ -796,7 +827,7 @@
         <span class="science-feature-dot"></span>
         <div>
           <strong>Reich an Postbiotika &amp; SCFAs</strong>
-          <span>Wirkt zusätzlich auf Mikrobiom-Vielfalt, Immunsystem und Darmbarriere</span>
+          <span>Kurzkettige Fettsäuren aus dem Fermentationsprozess unseres Komplexes</span>
         </div>
       </div>
       <div class="science-feature">
@@ -814,7 +845,7 @@
   <div class="science-bottom-inner">
     <div class="science-bottom">
       <div class="diversity-card">
-        <h4>Chronische Beschwerden durch geringe Mikrobiom-Vielfalt</h4>
+        <h4>Was unsere Mikrobiom-Vielfalt beeinflusst</h4>
         <div class="tag-pills">
           <span class="tag-pill">Westliche Ernährung</span>
           <span class="tag-pill">Umweltbelastung</span>
@@ -824,17 +855,16 @@
           <span class="tag-pill">Bewegungsmangel</span>
           <span class="tag-pill">Häufiger Antibiotikaeinsatz</span>
         </div>
-        <p>Die Vielfalt unseres Mikrobioms spielt eine zentrale Rolle für unser Wohlbefinden. Eine geringere Mikrobiom-Vielfalt wird mit einer Reihe chronischer Gesundheitsprobleme in Verbindung gebracht.</p>
+        <p>Die Vielfalt unseres Mikrobioms wird durch viele Faktoren des modernen Alltags beeinflusst – von der Ernährung bis zur Umgebung, in der wir leben.</p>
       </div>
 
       <div class="fodmap-card">
-        <h4>Fermentiertes Prä- &amp; Postbiotikum mit zertifiziertem Low-FODMAP-Status</h4>
+        <h4>Unser Fermentationskomplex: Prä- &amp; Postbiotikum mit zertifiziertem Low-FODMAP-Status</h4>
         <ul>
-          <li>Von der Monash University nach umfassender Kohlenhydratanalyse als Low FODMAP zertifiziert</li>
-          <li>Darmfreundlich und klinisch validiert für empfindliche Verdauungssysteme</li>
+          <li>Unser Fermentationskomplex ist von der Monash University nach umfassender Kohlenhydratanalyse als Low FODMAP zertifiziert</li>
+          <li>Nach standardisierten Analysemethoden geprüft und dokumentiert</li>
         </ul>
-        <p>Unser Fermentationskomplex überwindet die zentralen Grenzen klassischer Präbiotika: Verdauungsbeschwerden, einseitige Bakterienfütterung und zu wenig Wirkung auf die gesamte Mikrobiom-Vielfalt.</p>
-        <p class="footnote">* Cell (2021): Gut-microbiota-targeted diets modulate human immune status</p>
+        <p>Unser Fermentationskomplex vereint ein breiteres Spektrum an Ballaststoffen und bioaktiven Verbindungen als viele klassische Präbiotika – fermentiert und mit zertifiziertem Low-FODMAP-Status.</p>
       </div>
     </div>
   </div>
