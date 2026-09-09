@@ -208,6 +208,316 @@
     .product-copy{align-items:center;}
   }
 
+  /* ---------- SCIENCE / FERMENTATION SECTION ---------- */
+  .science-section{
+    padding:2vh 6vw 5vh;
+    background:var(--cream);
+    display:flex;
+    justify-content:center;
+  }
+  .science-inner{
+    width:100%;
+    max-width:1080px;
+  }
+  .science-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 2.6rem;
+  }
+  .science-head .eyebrow{color:var(--rust);}
+  .science-head h2{
+    font-family:'Archivo Black',sans-serif;
+    text-transform:uppercase;
+    color:var(--maroon);
+    font-size:clamp(1.4rem,3.6vw,2rem);
+    line-height:1.15;
+    margin:0.5rem 0 0;
+  }
+
+  .science-intro{
+    background:linear-gradient(150deg,#5e2418 0%,#3d5c42 55%,#2f4a3a 100%);
+    border-radius:24px;
+    padding:2.6rem 2.4rem;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    gap:2.2rem;
+    color:var(--cream);
+  }
+  .science-intro-text .eyebrow{color:var(--lime);}
+  .science-intro-text h3{
+    font-family:'Archivo Black',sans-serif;
+    text-transform:uppercase;
+    font-size:1.15rem;
+    line-height:1.25;
+    margin:0.5rem 0 0.8rem;
+  }
+  .science-intro-text p{
+    font-size:0.95rem;
+    line-height:1.55;
+    color:rgba(250,245,233,0.85);
+    margin:0;
+  }
+  .science-wheel{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:conic-gradient(var(--lime) 0turn 0.25turn,var(--orange) 0.25turn 0.5turn,var(--coral) 0.5turn 0.75turn,var(--purple) 0.75turn 1turn);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    position:relative;
+  }
+  .science-wheel::before{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border-radius:50%;
+    background:#2f4a3a;
+  }
+  .science-wheel-label{
+    position:relative;
+    z-index:1;
+    text-align:center;
+    line-height:1.2;
+    padding:0 0.8rem;
+  }
+  .science-wheel-label strong{
+    display:block;
+    font-family:'Archivo Black',sans-serif;
+    font-size:1.6rem;
+  }
+  .science-wheel-label span{
+    display:block;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--lime);
+    margin-top:0.2rem;
+  }
+  .science-features{
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+  }
+  .science-feature{
+    display:flex;
+    gap:0.7rem;
+    align-items:flex-start;
+  }
+  .science-feature-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--lime);
+    margin-top:0.5rem;
+    flex-shrink:0;
+  }
+  .science-feature strong{
+    display:block;
+    font-size:0.92rem;
+    color:var(--cream);
+  }
+  .science-feature span{
+    display:block;
+    font-size:0.82rem;
+    color:rgba(250,245,233,0.75);
+    margin-top:0.15rem;
+  }
+
+  @media (max-width:860px){
+    .science-intro{grid-template-columns:1fr;text-align:center;}
+    .science-wheel{margin:0 auto;}
+    .science-feature{justify-content:center;text-align:left;}
+  }
+
+  .science-facts{
+    margin-top:2rem;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1rem;
+  }
+  .fact-card{
+    background:#fff;
+    border:1px solid #e2d8c6;
+    border-radius:16px;
+    padding:1.4rem 1.2rem;
+  }
+  .fact-card h4{
+    font-family:'Archivo Black',sans-serif;
+    text-transform:uppercase;
+    color:var(--rust);
+    font-size:0.85rem;
+    margin:0 0 0.5rem;
+  }
+  .fact-card p{
+    font-size:0.85rem;
+    line-height:1.5;
+    color:#5a4a3a;
+    margin:0;
+  }
+  @media (max-width:860px){
+    .science-facts{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:520px){
+    .science-facts{grid-template-columns:1fr;}
+  }
+
+  .science-stages{
+    margin-top:2.6rem;
+  }
+  .science-stages h3{
+    text-align:center;
+    font-family:'Archivo Black',sans-serif;
+    text-transform:uppercase;
+    color:var(--maroon);
+    font-size:1rem;
+    letter-spacing:0.04em;
+    margin:0 0 1.6rem;
+  }
+  .stage-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:0.6rem;
+    flex-wrap:wrap;
+  }
+  .stage-card{
+    width:190px;
+    text-align:center;
+  }
+  .stage-icon{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 0.7rem;
+  }
+  .stage-icon svg{width:28px;height:28px;}
+  .stage-card:nth-child(1) .stage-icon{background:rgba(47,122,120,0.15);color:var(--teal);}
+  .stage-card:nth-child(3) .stage-icon{background:rgba(107,78,158,0.15);color:var(--purple);}
+  .stage-card:nth-child(5) .stage-icon{background:rgba(209,75,46,0.15);color:var(--coral);}
+  .stage-card:nth-child(7) .stage-icon{background:rgba(232,121,47,0.18);color:var(--orange);}
+  .stage-card em{
+    display:block;
+    font-size:0.78rem;
+    color:var(--rust);
+    font-style:italic;
+    margin-bottom:0.3rem;
+  }
+  .stage-card p{
+    font-size:0.85rem;
+    line-height:1.45;
+    color:#5a4a3a;
+    margin:0;
+  }
+  .stage-arrow{
+    color:#c9bba5;
+    flex-shrink:0;
+  }
+  .stage-arrow svg{width:20px;height:20px;}
+
+  @media (max-width:720px){
+    .stage-row{flex-direction:column;}
+    .stage-arrow{transform:rotate(90deg);}
+  }
+
+  .science-bottom{
+    margin-top:2.6rem;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.4rem;
+  }
+  .science-bottom > div{
+    border-radius:20px;
+    padding:2rem;
+  }
+  .diversity-card{
+    background:#f1ece0;
+  }
+  .diversity-card h4{
+    font-family:'Archivo Black',sans-serif;
+    text-transform:uppercase;
+    color:var(--maroon);
+    font-size:1rem;
+    line-height:1.25;
+    margin:0 0 1rem;
+  }
+  .tag-pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.5rem;
+    margin-bottom:1.2rem;
+  }
+  .tag-pill{
+    background:#fff;
+    border:1px solid #e2d8c6;
+    border-radius:999px;
+    padding:0.35rem 0.85rem;
+    font-size:0.78rem;
+    color:#5a4a3a;
+  }
+  .diversity-card p{
+    font-size:0.9rem;
+    line-height:1.55;
+    color:#5a4a3a;
+    margin:0 0 1.2rem;
+  }
+  .stat-badge{
+    width:88px;
+    height:88px;
+    border-radius:50%;
+    background:var(--maroon);
+    color:var(--cream);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    line-height:1.15;
+  }
+  .stat-badge strong{font-size:1.3rem;font-family:'Archivo Black',sans-serif;}
+  .stat-badge span{font-size:0.6rem;padding:0 0.4rem;}
+
+  .fodmap-card{
+    background:linear-gradient(150deg,var(--rust) 0%,var(--orange) 100%);
+    color:var(--cream);
+  }
+  .fodmap-card h4{
+    font-family:'Archivo Black',sans-serif;
+    text-transform:uppercase;
+    font-size:1rem;
+    line-height:1.25;
+    margin:0 0 1rem;
+  }
+  .fodmap-card ul{
+    margin:0 0 1rem;
+    padding-left:1.1rem;
+  }
+  .fodmap-card li{
+    font-size:0.88rem;
+    line-height:1.5;
+    margin-bottom:0.5rem;
+  }
+  .fodmap-card p{
+    font-size:0.88rem;
+    line-height:1.55;
+    color:rgba(250,245,233,0.9);
+    margin:0 0 0.8rem;
+  }
+  .fodmap-card .footnote{
+    font-size:0.72rem;
+    color:rgba(250,245,233,0.65);
+    margin:0;
+  }
+
+  @media (max-width:720px){
+    .science-bottom{grid-template-columns:1fr;}
+  }
+
   /* ---------- SIGNUP SECTION ---------- */
   .signup-section{
           padding:5vh 6vw 7vh;
@@ -471,7 +781,140 @@
     </div>
   </section>
 
-  <section class="signup-section" id="signup">
+  <section class="science-section" id="wissenschaft">
+  <div class="science-inner">
+    <div class="science-head">
+      <span class="eyebrow">Die Wissenschaft dahinter</span>
+      <h2>So verwandeln wir Pflanzenvielfalt in FermentBites</h2>
+    </div>
+
+    <div class="science-intro">
+      <div class="science-intro-text">
+        <span class="eyebrow">Unser Fermentationskomplex</span>
+        <h3>36 fermentierte Frucht- &amp; Gemüsesorten, veredelt mit Akazienfaser</h3>
+        <p>Für zusätzliche präbiotische Kraft veredeln wir unseren Fermentationskomplex mit hochwertiger Akazienfaser – das erhöht den Anteil löslicher Ballaststoffe auf über 50&nbsp;%.</p>
+      </div>
+
+      <div class="science-wheel">
+        <div class="science-wheel-label">
+          <strong>4</strong>
+          <span>Fermentationsstufen</span>
+        </div>
+      </div>
+
+      <div class="science-features">
+        <div class="science-feature">
+          <span class="science-feature-dot"></span>
+          <div>
+            <strong>Von der Monash University als Low FODMAP zertifiziert</strong>
+            <span>Keine Blähungen, keine Krämpfe</span>
+          </div>
+        </div>
+        <div class="science-feature">
+          <span class="science-feature-dot"></span>
+          <div>
+            <strong>Reich an Polyphenolen</strong>
+            <span>Zusätzliche präbiotische Wirkung</span>
+          </div>
+        </div>
+        <div class="science-feature">
+          <span class="science-feature-dot"></span>
+          <div>
+            <strong>Reich an Postbiotika &amp; SCFAs</strong>
+            <span>Wirkt zusätzlich auf Mikrobiom-Vielfalt, Immunsystem und Darmbarriere</span>
+          </div>
+        </div>
+        <div class="science-feature">
+          <span class="science-feature-dot"></span>
+          <div>
+            <strong>Extra Ballaststoff-Power</strong>
+            <span>Akazienfaser erhöht den Anteil löslicher Ballaststoffe auf über 50&nbsp;%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="science-facts">
+      <div class="fact-card">
+        <h4>Ballaststoffe</h4>
+        <p>Über 50&nbsp;% wasserlösliche Ballaststoffe – u.&nbsp;a. durch den Zusatz von Akazienfaser als funktionellem Trägerstoff.</p>
+      </div>
+      <div class="fact-card">
+        <h4>Mikrofasern</h4>
+        <p>Über 30&nbsp;% bioaktivierte Mikrofasern, die im Fermentationsprozess feiner aufgeschlossen werden.</p>
+      </div>
+      <div class="fact-card">
+        <h4>Polyphenole</h4>
+        <p>Hoch bioverfügbare Polyphenole (&gt;&nbsp;5,0&nbsp;mg GAE/g) – durch Fermentation in besser verfügbare Verbindungen umgewandelt.</p>
+      </div>
+      <div class="fact-card">
+        <h4>Kurzkettige Fettsäuren</h4>
+        <p>Enthält vorgeformte SCFAs, darunter &gt;&nbsp;1,5&nbsp;mg Acetat/g und &gt;&nbsp;0,5&nbsp;mg Butyrat/g.</p>
+      </div>
+    </div>
+
+    <div class="science-stages">
+      <h3>4-stufige Fermentation über 8 Wochen</h3>
+      <div class="stage-row">
+        <div class="stage-card">
+          <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><circle cx="7" cy="8" r="1.6"/><circle cx="17" cy="8" r="1.6"/><circle cx="7" cy="16" r="1.6"/><circle cx="17" cy="16" r="1.6"/></svg></div>
+          <em>Aspergillus oryzae</em>
+          <p>Abbau komplexer Matrix (Fasern, Proteine, Fett)</p>
+        </div>
+        <div class="stage-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></div>
+        <div class="stage-card">
+          <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="9" r="2.2"/><circle cx="15" cy="11" r="2.6"/><circle cx="10" cy="16" r="1.8"/></svg></div>
+          <em>Saccharomyces cerevisiae</em>
+          <p>Abbau von Stärke &amp; Zucker, mehr Vitamine</p>
+        </div>
+        <div class="stage-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></div>
+        <div class="stage-card">
+          <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="7" width="10" height="10" rx="5"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg></div>
+          <em>Lactobacillus &amp; Bifidobacteria</em>
+          <p>Mehr Antioxidantien &amp; Polyphenole, mehr Milchsäure</p>
+        </div>
+        <div class="stage-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></div>
+        <div class="stage-card">
+          <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c3 3.5 5 6.5 5 9.5a5 5 0 0 1-10 0C7 9.5 9 6.5 12 3z"/></svg></div>
+          <em>Essigsäurebakterien</em>
+          <p>Mehr kurzkettige Fettsäuren, weniger Antinährstoffe</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="science-bottom">
+      <div class="diversity-card">
+        <h4>Chronische Beschwerden durch geringe Mikrobiom-Vielfalt</h4>
+        <div class="tag-pills">
+          <span class="tag-pill">Westliche Ernährung</span>
+          <span class="tag-pill">Umweltbelastung</span>
+          <span class="tag-pill">Chronischer Stress</span>
+          <span class="tag-pill">Kaiserschnitt</span>
+          <span class="tag-pill">Kein Stillen</span>
+          <span class="tag-pill">Bewegungsmangel</span>
+          <span class="tag-pill">Häufiger Antibiotikaeinsatz</span>
+        </div>
+        <p>Die Vielfalt unseres Mikrobioms spielt eine zentrale Rolle für unser Wohlbefinden. Eine geringere Mikrobiom-Vielfalt wird mit einer Reihe chronischer Gesundheitsprobleme in Verbindung gebracht.</p>
+        <div class="stat-badge">
+          <strong>20&nbsp;%</strong>
+          <span>jährliches Wachstum des Präbiotika-Markts</span>
+        </div>
+      </div>
+
+      <div class="fodmap-card">
+        <h4>Fermentiertes Prä- &amp; Postbiotikum mit zertifiziertem Low-FODMAP-Status</h4>
+        <ul>
+          <li>Von der Monash University nach umfassender Kohlenhydratanalyse als Low FODMAP zertifiziert</li>
+          <li>Darmfreundlich und klinisch validiert für empfindliche Verdauungssysteme</li>
+        </ul>
+        <p>Unser Fermentationskomplex überwindet die zentralen Grenzen klassischer Präbiotika: Verdauungsbeschwerden, einseitige Bakterienfütterung und zu wenig Wirkung auf die gesamte Mikrobiom-Vielfalt.</p>
+        <p class="footnote">* Cell (2021): Gut-microbiota-targeted diets modulate human immune status</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="signup-section" id="signup">
     <div class="signup-card">
       <h2>Wir produzieren in limitierten Chargen frisch in Deutschland</h2>
       <p>Trag dich in unsere Warteliste ein und erfahre als Erste:r, wenn FermentBites live geht.</p>
