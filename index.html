@@ -39,43 +39,6 @@
     letter-spacing:-0.01em;
 }
 
-  /* ---------- SITE HEADER ---------- */
-  .site-header{
-    position:sticky;
-    top:0;
-    z-index:40;
-    background:rgba(94,36,24,0.94);
-    backdrop-filter:blur(6px);
-    -webkit-backdrop-filter:blur(6px);
-  }
-  .site-header-inner{
-    max-width:1180px;
-    margin:0 auto;
-    padding:0.9rem 6vw;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-  }
-  .site-logo{
-    font-family:'Archivo Black','Inter',sans-serif;
-    color:var(--lime);
-    font-size:1.05rem;
-    text-decoration:none;
-    letter-spacing:-0.01em;
-  }
-  .site-nav{
-    display:flex;
-    gap:1.6rem;
-  }
-  .site-nav a{
-    color:var(--cream);
-    text-decoration:none;
-    font-weight:600;
-    font-size:0.9rem;
-    transition:color .15s ease;
-  }
-  .site-nav a:hover{color:var(--lime);}
-
   /* ---------- HERO ---------- */
   .hero{
         position:relative;
@@ -540,7 +503,7 @@
 
   /* ---------- SIGNUP SECTION ---------- */
   .signup-section{
-          padding:5vh 6vw 7vh;
+          padding:5vh 6vw 2vh;
     background:var(--cream);
     display:flex;
     justify-content:center;
@@ -656,7 +619,7 @@
 
   /* ---------- FAQ ---------- */
   .faq-section{
-    padding:5vh 6vw 7vh;
+    padding:1vh 6vw 7vh;
     background:var(--cream);
     display:flex;
     justify-content:center;
@@ -832,16 +795,7 @@
   </head>
   <body>
 
-<header class="site-header">
-  <div class="site-header-inner">
-    <a class="site-logo" href="#top">FermentBites</a>
-    <nav class="site-nav">
-      <a href="#faq">FAQ</a>
-    </nav>
-  </div>
-</header>
-
-  <section class="hero">
+<section class="hero">
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
