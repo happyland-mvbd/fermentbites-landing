@@ -700,22 +700,39 @@
     position:relative;
     z-index:2;
     display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0.7rem;
+    margin-top:0.8rem;
+  }
+  .socials-label{
+    font-size:0.76rem;
+    font-weight:700;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:rgba(250,245,233,0.75);
+  }
+  .socials-icons{
+    display:flex;
     gap:1rem;
-    margin-top:0.6rem;
   }
   .social-link{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    width:44px;
-    height:44px;
+    width:56px;
+    height:56px;
     border-radius:50%;
-    border:1.5px solid rgba(250,245,233,0.4);
+    border:1.5px solid rgba(250,245,233,0.55);
     color:var(--cream);
-    transition:border-color .15s ease, background .15s ease;
+    transition:border-color .15s ease, background .15s ease, transform .15s ease;
   }
-  .social-link:hover{border-color:var(--lime);background:rgba(217,234,114,0.12);}
-  .social-link svg{width:20px;height:20px;fill:currentColor;}
+  .social-link:hover{border-color:var(--lime);background:rgba(217,234,114,0.15);transform:translateY(-1px);}
+  .social-link svg{width:28px;height:28px;fill:currentColor;}
+
+  @media (max-width:860px){
+    .socials{align-items:center;}
+  }
 
   /* ---------- FOOTER ---------- */
   footer{
@@ -820,12 +837,15 @@
       <a class="cta-btn" href="#signup">Als Erste:r Bescheid bekommen</a>
 
       <div class="socials">
-        <a class="social-link" href="https://www.instagram.com/fermentbites/" target="_blank" rel="noopener" aria-label="FermentBites auf Instagram">
-          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.62.07 4.81s-.01 3.56-.07 4.81c-.15 3.23-1.67 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07-3.2 0-3.6 0-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92-.06-1.25-.07-1.62-.07-4.81s.01-3.56.07-4.81c.15-3.23 1.67-4.77 4.92-4.92C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.14 0-3.51.01-4.75.07-2.36.11-3.47 1.24-3.58 3.58-.06 1.24-.07 1.6-.07 4.75s.01 3.51.07 4.75c.11 2.34 1.22 3.47 3.58 3.58 1.24.06 1.6.07 4.75.07s3.51-.01 4.75-.07c2.36-.11 3.47-1.24 3.58-3.58.06-1.24.07-1.6.07-4.75s-.01-3.51-.07-4.75c-.11-2.34-1.22-3.47-3.58-3.58-1.24-.06-1.61-.07-4.75-.07zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28zm5.14-1.98a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg>
-        </a>
-        <a class="social-link" href="https://www.linkedin.com/company/135288296/" target="_blank" rel="noopener" aria-label="FermentBites auf LinkedIn">
-          <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
-        </a>
+        <span class="socials-label">Folg uns für Updates</span>
+        <div class="socials-icons">
+          <a class="social-link" href="https://www.instagram.com/fermentbites/" target="_blank" rel="noopener" aria-label="FermentBites auf Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.62.07 4.81s-.01 3.56-.07 4.81c-.15 3.23-1.67 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07-3.2 0-3.6 0-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92-.06-1.25-.07-1.62-.07-4.81s.01-3.56.07-4.81c.15-3.23 1.67-4.77 4.92-4.92C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.14 0-3.51.01-4.75.07-2.36.11-3.47 1.24-3.58 3.58-.06 1.24-.07 1.6-.07 4.75s.01 3.51.07 4.75c.11 2.34 1.22 3.47 3.58 3.58 1.24.06 1.6.07 4.75.07s3.51-.01 4.75-.07c2.36-.11 3.47-1.24 3.58-3.58.06-1.24.07-1.6.07-4.75s-.01-3.51-.07-4.75c-.11-2.34-1.22-3.47-3.58-3.58-1.24-.06-1.61-.07-4.75-.07zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28zm5.14-1.98a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg>
+          </a>
+          <a class="social-link" href="https://www.linkedin.com/company/135288296/" target="_blank" rel="noopener" aria-label="FermentBites auf LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
 
