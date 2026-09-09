@@ -141,12 +141,20 @@
     display:block;
 }
   .intro{
-        color:var(--cream);
+    color:var(--cream);
     font-size:clamp(1.05rem,2.2vw,1.35rem);
     line-height:1.5;
     max-width:520px;
     margin:0;
-}
+  }
+  .intro a{
+    color:var(--lime);
+    text-decoration:underline;
+    text-underline-offset:2px;
+  }
+  .intro a:hover{
+    color:var(--lime-dark);
+  }
   .badge{
         display:inline-flex;
     align-items:center;
@@ -843,7 +851,7 @@
       <div class="hero-inner">
         <span class="badge">Erhältlich ab November 2026</span>
         <img class="wordmark-img" src="images/wordmark.png" alt="FermentBites">
-        <p class="intro">FermentBites bringt Next-Level Mikrobiom-Nutrition auf den Tisch – wissenschaftlich entwickelt in Kooperation mit dem Fraunhofer IVV, alltagstauglich und ganz ohne Optimierungswahn.</p>
+        <p class="intro">FermentBites bringt Next-Level Mikrobiom-Nutrition auf den Tisch – wissenschaftlich entwickelt in Kooperation mit dem <a href="https://www.ivv.fraunhofer.de/" target="_blank" rel="noopener">Fraunhofer IVV</a>, alltagstauglich und ganz ohne Optimierungswahn.</p>
 
       <div class="usp-row">
         <span class="usp-pill">Vegan</span>
