@@ -813,9 +813,101 @@
     color:#6b5a4a;
   }
 
+/* --- Passwort-Schutz (vorübergehend) --- */
+body:not(.pw-unlocked) > *:not(#pw-gate){
+  display:none !important;
+}
+#pw-gate{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--cream);
+  padding:24px;
+}
+#pw-gate.pw-hidden{ display:none; }
+.pw-gate-box{
+  max-width:360px;
+  width:100%;
+  text-align:center;
+  font-family:'Inter',system-ui,sans-serif;
+}
+.pw-gate-box h1{
+  font-size:1.15rem;
+  color:var(--maroon);
+  margin:0 0 1.25rem;
+}
+.pw-gate-box input[type="password"]{
+  width:100%;
+  padding:0.85rem 1rem;
+  border-radius:12px;
+  border:1.5px solid rgba(94,36,24,0.25);
+  font-size:1rem;
+  margin-bottom:0.9rem;
+  box-sizing:border-box;
+  text-align:center;
+}
+.pw-gate-box button{
+  width:100%;
+  padding:0.85rem 1rem;
+  border-radius:999px;
+  border:none;
+  background:var(--lime);
+  color:var(--maroon);
+  font-weight:700;
+  font-size:1rem;
+  cursor:pointer;
+}
+.pw-gate-box button:hover{ background:var(--lime-dark); }
+.pw-gate-error{
+  display:none;
+  color:var(--coral);
+  font-size:0.9rem;
+  margin-top:0.75rem;
+}
 </style>
 </head>
 <body>
+
+<div id="pw-gate">
+  <div class="pw-gate-box">
+    <h1>Diese Seite ist vorübergehend geschützt.<br>Bitte Passwort eingeben:</h1>
+    <form id="pw-gate-form" autocomplete="off">
+      <input type="password" id="pw-gate-input" placeholder="Passwort" autofocus>
+      <button type="submit">Zugang freischalten</button>
+      <div class="pw-gate-error" id="pw-gate-error">Falsches Passwort, bitte erneut versuchen.</div>
+    </form>
+  </div>
+</div>
+<script>
+(function(){
+  var PW = "FermentBites2026!";
+  var gate = document.getElementById('pw-gate');
+  var form = document.getElementById('pw-gate-form');
+  var input = document.getElementById('pw-gate-input');
+  var err = document.getElementById('pw-gate-error');
+  try {
+    if (sessionStorage.getItem('fb_unlocked') === '1') {
+      document.body.classList.add('pw-unlocked');
+      gate.classList.add('pw-hidden');
+    }
+  } catch(e) {}
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    if (input.value === PW) {
+      document.body.classList.add('pw-unlocked');
+      gate.classList.add('pw-hidden');
+      try { sessionStorage.setItem('fb_unlocked','1'); } catch(e) {}
+    } else {
+      err.style.display = 'block';
+      input.value = '';
+      input.focus();
+    }
+  });
+})();
+</script>
 
 <section class="hero">
   <div class="blob blob-1"></div>
