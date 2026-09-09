@@ -340,8 +340,8 @@
     max-width:480px;
   }
   .science-wheel{
-    width:170px;
-    height:170px;
+    width:210px;
+    height:210px;
     border-radius:50%;
     background:conic-gradient(var(--lime) 0turn 0.25turn,var(--orange) 0.25turn 0.5turn,var(--coral) 0.5turn 0.75turn,var(--purple) 0.75turn 1turn);
     display:flex;
@@ -353,7 +353,7 @@
   .science-wheel::before{
     content:"";
     position:absolute;
-    inset:13px;
+    inset:16px;
     border-radius:50%;
     background:#2f4a3a;
   }
@@ -362,12 +362,15 @@
     z-index:1;
     text-align:center;
     line-height:1.2;
-    padding:0 0.8rem;
+    padding:0 1rem;
   }
   .science-wheel-label strong{
     display:block;
     font-family:'Archivo Black',sans-serif;
     font-size:1.8rem;
+  }
+  .science-wheel-label strong.science-wheel-stat-2{
+    margin-top:0.7rem;
   }
   .science-wheel-label span{
     display:block;
@@ -376,14 +379,6 @@
     letter-spacing:0.06em;
     color:var(--lime);
     margin-top:0.2rem;
-  }
-  .science-wheel-label .science-wheel-sub{
-    display:block;
-    font-style:normal;
-    font-size:0.62rem;
-    letter-spacing:0.02em;
-    color:rgba(250,245,233,0.7);
-    margin-top:0.35rem;
   }
   .science-features{
     display:flex;
@@ -996,8 +991,7 @@ body:not(.pw-unlocked) > *:not(#pw-gate){
 <section class="science-section" id="wissenschaft">
   <div class="science-inner">
     <div class="science-head">
-      <span class="eyebrow">Die Wissenschaft dahinter</span>
-      <h2>So verwandeln wir Pflanzenvielfalt in FermentBites</h2>
+      <h2>Die Wissenschaft dahinter</h2>
     </div>
   </div>
 </section>
@@ -1014,7 +1008,8 @@ body:not(.pw-unlocked) > *:not(#pw-gate){
       <div class="science-wheel-label">
         <strong>4</strong>
         <span>Fermentationsstufen</span>
-        <em class="science-wheel-sub">in rund 8 Wochen</em>
+        <strong class="science-wheel-stat-2">8</strong>
+        <span>Wochen</span>
       </div>
     </div>
 
