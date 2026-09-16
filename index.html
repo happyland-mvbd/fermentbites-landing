@@ -870,14 +870,29 @@ color:var(--coral);
 font-size:0.9rem;
 margin-top:0.75rem;
 }
+
+#cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:var(--ink);color:var(--cream);padding:20px 24px;box-shadow:0 -4px 24px rgba(0,0,0,0.25);transform:translateY(100%);opacity:0;pointer-events:none;transition:transform .3s ease, opacity .3s ease;}
+#cookie-banner.is-visible{transform:translateY(0);opacity:1;pointer-events:auto;}
+#cookie-banner .cookie-banner-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+#cookie-banner p{margin:0;font-size:14px;line-height:1.5;color:var(--cream);flex:1 1 400px;}
+#cookie-banner a{color:var(--lime);text-decoration:underline;}
+#cookie-banner .cookie-banner-actions{display:flex;gap:12px;flex-wrap:wrap;flex:0 0 auto;}
+#cookie-banner button{font-family:inherit;font-size:14px;font-weight:600;padding:11px 20px;border-radius:999px;border:2px solid var(--cream);cursor:pointer;transition:background .2s ease, color .2s ease;}
+#cookie-banner #cookie-accept{background:var(--lime);border-color:var(--lime);color:var(--ink);}
+#cookie-banner #cookie-accept:hover{background:var(--lime-dark);border-color:var(--lime-dark);}
+#cookie-banner #cookie-reject{background:transparent;color:var(--cream);}
+#cookie-banner #cookie-reject:hover{background:rgba(250,245,233,0.12);}
+@media (max-width:640px){#cookie-banner{padding:18px 16px;} #cookie-banner .cookie-banner-inner{flex-direction:column;align-items:stretch;} #cookie-banner .cookie-banner-actions{justify-content:stretch;} #cookie-banner button{flex:1 1 0;}}
 </style>
 <!-- Google Consent Mode v2: Speicherung/Cookies sind standardmäßig deaktiviert, bis eine Einwilligung vorliegt -->
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+var fbStoredConsent = null;
+try { fbStoredConsent = localStorage.getItem('fermentbites_analytics_consent'); } catch(e) {}
 gtag('consent', 'default', {
 'ad_storage': 'denied',
-'analytics_storage': 'denied',
+'analytics_storage': fbStoredConsent === 'granted' ? 'granted' : 'denied',
 'ad_user_data': 'denied',
 'ad_personalization': 'denied'
 });
@@ -887,6 +902,43 @@ gtag('consent', 'default', {
 <script>
 gtag('js', new Date());
 gtag('config', 'G-3J4KJNHBP0', { 'anonymize_ip': true });
+</script>
+<!-- Cookie-Consent-Banner Steuerung -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var banner = document.getElementById('cookie-banner');
+  if (!banner) return;
+  function hasDecision() {
+    try { return localStorage.getItem('fermentbites_analytics_consent') !== null; } catch(e) { return false; }
+  }
+  function showBanner() { banner.classList.add('is-visible'); }
+  function hideBanner() { banner.classList.remove('is-visible'); }
+  if (!hasDecision()) { showBanner(); }
+  var dsLink = banner.querySelector('[data-modal]');
+  if (dsLink) {
+    dsLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      var modal = document.getElementById(dsLink.getAttribute('data-modal'));
+      if (modal) { modal.classList.add('open'); }
+    });
+  }
+  var acceptBtn = document.getElementById('cookie-accept');
+  var rejectBtn = document.getElementById('cookie-reject');
+  if (acceptBtn) acceptBtn.addEventListener('click', function() {
+    try { localStorage.setItem('fermentbites_analytics_consent', 'granted'); } catch(e) {}
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+    hideBanner();
+  });
+  if (rejectBtn) rejectBtn.addEventListener('click', function() {
+    try { localStorage.setItem('fermentbites_analytics_consent', 'denied'); } catch(e) {}
+    gtag('consent', 'update', { 'analytics_storage': 'denied' });
+    hideBanner();
+  });
+  window.fermentbitesOpenCookieSettings = function(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    showBanner();
+  };
+});
 </script>
 </head>
 <body>
@@ -1314,7 +1366,10 @@ Diese Seite setzt beim reinen Aufruf keine Tracking- oder Marketing-Cookies. Ers
 
 <h3>4. Google Analytics</h3>
 <p>
-Wir nutzen auf dieser Seite Google Analytics (Anbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland) zur reichweitenbezogenen Analyse der Websitenutzung. Google Analytics ist bei uns standardmäßig auf „Einwilligung abgelehnt" (Consent Mode) eingestellt: Es werden dadurch keine Analyse-Cookies gesetzt und keine personenbezogenen Kennungen gespeichert, sondern lediglich anonymisierte, cookielose Messwerte übertragen (inkl. gekürzter IP-Adresse). Cookiebasierte, weitergehende Analysefunktionen würden erst nach deiner ausdrücklichen Einwilligung aktiviert. Rechtsgrundlage für die cookielose Basismessung ist unser berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO) an der statistischen Auswertung der Websitenutzung.
+Wir nutzen auf dieser Seite Google Analytics (Anbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland) zur reichweitenbezogenen Analyse der Websitenutzung. Beim ersten Besuch unserer Seite wirst du über einen Cookie-Banner gefragt, ob du der Nutzung von Google Analytics zustimmst. Erst wenn du „Alle akzeptieren" wählst, werden Analyse-Cookies gesetzt und dein Nutzungsverhalten (z. B. besuchte Seiten, Verweildauer) ausgewertet; Rechtsgrundlage hierfür ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du jederzeit mit Wirkung für die Zukunft widerrufen kannst. Entscheidest du dich für „Nur notwendige" oder triffst du keine Auswahl, bleibt Google Analytics auf „Einwilligung abgelehnt" (Consent Mode) eingestellt: Es werden dann keine Cookies gesetzt und keine personenbezogenen Kennungen gespeichert, sondern höchstens anonymisierte, cookielose Messwerte übertragen (inkl. gekürzter IP-Adresse) auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO) an der statistischen Auswertung der Websitenutzung.
+</p>
+<p>
+Du kannst deine Cookie-Einwilligung jederzeit <a href="#" onclick="window.fermentbitesOpenCookieSettings && window.fermentbitesOpenCookieSettings(event)">hier ändern</a>.
 </p>
 
 <h3>5. Deine Rechte</h3>
@@ -1447,5 +1502,14 @@ btn.disabled = false;
 });
 </script>
 
+<div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie-Einwilligung">
+<div class="cookie-banner-inner">
+<p>Wir nutzen Google Analytics, um zu verstehen, wie unsere Seite genutzt wird. Das ist freiwillig – du kannst zustimmen oder ablehnen. Mehr dazu in unserer <a href="#" data-modal="datenschutz-modal">Datenschutzerklärung</a>.</p>
+<div class="cookie-banner-actions">
+<button type="button" id="cookie-reject">Nur notwendige</button>
+<button type="button" id="cookie-accept">Alle akzeptieren</button>
+</div>
+</div>
+</div>
 </body>
 </html>
