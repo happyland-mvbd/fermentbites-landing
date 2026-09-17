@@ -1146,7 +1146,7 @@ input.focus();
 <h2>Trag dich in unsere Warteliste ein und erfahre als Erste:r, wenn FermentBites live geht.</h2>
 <p class="event-note">📍 Wir sind am 9. &amp; 10. Oktober 2026 mit einem Stand auf der <strong><a href="https://www.berlinfoodweek.de/festival/house-of-food/" target="_blank" rel="noopener">Berlin Food Week</a></strong> im BIKINI Berlin – komm vorbei und probiere FermentBites exklusiv als Erste:r.</p>
 
-<form class="signup" id="signupForm" novalidate>
+<form class="signup" id="signupForm">
 <div class="field-row">
 <div class="field">
 <label for="firstNameInput">Vorname</label>
@@ -1474,7 +1474,11 @@ var firstName = document.getElementById('firstNameInput').value.trim();
 var lastName = document.getElementById('lastNameInput').value.trim();
 var ageGroup = document.getElementById('ageGroupInput').value;
 var plz = document.getElementById('plzInput').value.trim();
-if(!email || !firstName || !lastName || !ageGroup || !plz){ return; }
+if(!email || !firstName || !lastName || !ageGroup || !plz){
+msg.textContent = 'Bitte fülle alle Felder aus.';
+msg.className = 'form-msg error';
+return;
+}
 var region = getRegion(plz);
 
 btn.disabled = true;
