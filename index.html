@@ -933,6 +933,45 @@ font-style:normal;
 .faq-section{padding:0 6vw 5vh;}
 .fact-card p,.product-copy p,.science-feature span{font-size:0.88rem;line-height:1.5;}
 }
+
+/* ---------- Fermentmischung: ein-/ausklappbar ---------- */
+.science-intro-toggle{
+display:inline-flex;
+align-items:center;
+gap:0.5rem;
+background:none;
+border:none;
+cursor:pointer;
+font-family:'MaisonNeueMonoRegular',monospace;
+padding:0;
+}
+.science-intro-toggle-icon{
+flex-shrink:0;
+width:22px;
+height:22px;
+border-radius:50%;
+border:1.5px solid var(--lime);
+color:var(--lime);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:1rem;
+font-weight:700;
+line-height:1;
+transition:transform .2s ease;
+}
+.science-intro.open .science-intro-toggle-icon{transform:rotate(45deg);}
+.science-intro:not(.open) .science-intro-text h3,
+.science-intro:not(.open) .science-intro-text p,
+.science-intro:not(.open) .science-wheel,
+.science-intro:not(.open) .science-features{
+display:none;
+}
+.science-intro:not(.open) .science-intro-grid{
+grid-template-columns:1fr;
+justify-items:center;
+text-align:center;
+}
 </style>
 <!-- Google Consent Mode v2: Speicherung/Cookies sind standardmäßig deaktiviert, bis eine Einwilligung vorliegt -->
 <script>
@@ -1124,7 +1163,7 @@ input.focus();
 <section class="science-intro">
 <div class="science-intro-grid">
 <div class="science-intro-text">
-<span class="eyebrow">Unsere Fermentmischung</span>
+<button type="button" class="eyebrow science-intro-toggle" id="scienceIntroToggle" aria-expanded="false"><span>Unsere Fermentmischung</span><span class="science-intro-toggle-icon">+</span></button>
 <h3>30+ fermentierte Obst- & Gemüsesorten, potenziert durch Akazienfaser</h3>
 <p>Für zusätzliche präbiotische Kraft veredeln wir unsere Fermentmischung mit hochwertiger Akazienfaser – das erhöht den Anteil löslicher Ballaststoffe auf über 50&nbsp;%. Enthalten sind außerdem 7&nbsp;Vitamine, Zink und SCFAs (kurzkettige Fettsäuren).</p>
 </div>
@@ -1507,6 +1546,17 @@ item.classList.toggle('open', willOpen);
 btn.setAttribute('aria-expanded', String(willOpen));
 });
 });
+
+// Fermentmischung (science-intro) collapse
+var scienceIntroToggle = document.getElementById('scienceIntroToggle');
+if(scienceIntroToggle){
+scienceIntroToggle.addEventListener('click', function(){
+var section = scienceIntroToggle.closest('.science-intro');
+var willOpenSI = !section.classList.contains('open');
+section.classList.toggle('open', willOpenSI);
+scienceIntroToggle.setAttribute('aria-expanded', String(willOpenSI));
+});
+}
 
 // -------------------------------------------------------------
 // KLAVIYO INTEGRATION – eingerichtet & getestet (Status 202)
