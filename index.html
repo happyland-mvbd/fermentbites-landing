@@ -918,6 +918,21 @@ em,i,cite{
 font-family:'MaisonNeueBookItalic','MaisonNeueBook',sans-serif;
 font-style:normal;
 }
+
+/* ---------- MOBILE: kompakteres Layout + weniger Text ---------- */
+@media (max-width:640px){
+.hide-mobile{display:none;}
+.hero{padding:5vh 6vw 6vh;}
+.usp-row{gap:0.4rem;}
+.usp-pill{font-size:0.72rem;padding:0.4rem 0.8rem;}
+.cta-btn{width:100%;}
+.product-section{padding:4vh 6vw 2vh;}
+.facts-section{padding:0 6vw 3vh;}
+.science-section{padding:2vh 6vw 0;}
+.science-intro{padding:5vh 6vw;}
+.faq-section{padding:0 6vw 5vh;}
+.fact-card p,.product-copy p,.science-feature span{font-size:0.88rem;line-height:1.5;}
+}
 </style>
 <!-- Google Consent Mode v2: Speicherung/Cookies sind standardmäßig deaktiviert, bis eine Einwilligung vorliegt -->
 <script>
@@ -1068,7 +1083,7 @@ input.focus();
 <div class="product-copy">
 <span class="eyebrow">Mehr als man schmeckt</span>
 <h2>30+ fermentierter Obst- & Gemüsekomplexe + Vitamine + Mikronährstoffe – alles in einem Gummy</h2>
-<p>Wir könnten dir einfach nur unser Gummy verkaufen, weil es so gut schmeckt. Wir wollen dir aber die geballte Pflanzenvielfalt der Natur geben – fermentiert, mit wertvollen <a href="https://www.bzfe.de/presse/pressemeldungen-archiv/polyphenole-in-der-nahrung" target="_blank" rel="noopener">Polyphenolen</a>. Denn in der Natur steckt ein Haufen gesundheitsfördernder Eigenschaften. Dass wir das alles in einen kleinen, köstlichen Bite packen konnten, ist natürlich extra schön.</p>
+<p>Wir könnten dir einfach nur unser Gummy verkaufen, weil es so gut schmeckt. Wir wollen dir aber die geballte Pflanzenvielfalt der Natur geben – fermentiert, mit wertvollen <a href="https://www.bzfe.de/presse/pressemeldungen-archiv/polyphenole-in-der-nahrung" target="_blank" rel="noopener">Polyphenolen</a>. <span class="hide-mobile">Denn in der Natur steckt ein Haufen gesundheitsfördernder Eigenschaften. Dass wir das alles in einen kleinen, köstlichen Bite packen konnten, ist natürlich extra schön.</span></p>
 </div>
 </div>
 </section>
@@ -1078,19 +1093,19 @@ input.focus();
 <div class="science-facts">
 <div class="fact-card">
 <h4>Bioaktivierte Pflanzenstoffe</h4>
-<p>Liefert wertvolle Polyphenole aus 30+ Früchten und Gemüsesorten. Der Fermentationsprozess spaltet diese pflanzlichen Antioxidantien auf und macht sie so besonders leicht für den Körper verfügbar.</p>
+<p>Liefert wertvolle Polyphenole aus 30+ Früchten und Gemüsesorten. <span class="hide-mobile">Der Fermentationsprozess spaltet diese pflanzlichen Antioxidantien auf und macht sie so besonders leicht für den Körper verfügbar.</span></p>
 </div>
 <div class="fact-card">
 <h4>Kurzkettige Fettsäuren</h4>
-<p>Enthält bereits vorgeformte kurzkettige Fettsäuren (SCFAs) wie Acetat und Butyrat. Diese entstehen sonst erst mühevoll bei der Bakterienfermentation im Dickdarm und stehen den Darmzellen hier direkt als Bausteine zur Verfügung.</p>
+<p>Enthält bereits vorgeformte kurzkettige Fettsäuren (SCFAs) wie Acetat und Butyrat. <span class="hide-mobile">Diese entstehen sonst erst mühevoll bei der Bakterienfermentation im Dickdarm und stehen den Darmzellen hier direkt als Bausteine zur Verfügung.</span></p>
 </div>
 <div class="fact-card">
 <h4>Keine lebenden Kulturen</h4>
-<p>Durch die Fermentation entstehen Postbiotika. Anders als Probiotika enthalten sie keine lebenden Kulturen. Das macht sie besonders stabil, unempfindlich gegenüber Magensäure und gut verträglich.</p>
+<p>Durch die Fermentation entstehen Postbiotika. Anders als Probiotika enthalten sie keine lebenden Kulturen. <span class="hide-mobile">Das macht sie besonders stabil, unempfindlich gegenüber Magensäure und gut verträglich.</span></p>
 </div>
 <div class="fact-card">
 <h4>Schonende Ballaststoffe</h4>
-<p>Über 50&nbsp;% wasserlösliche Ballaststoffe und mehr als 30&nbsp;% bioaktivierte Mikrofasern – u.a. mit Akazienfaser. Sie dienen deiner Darmflora als gezielte Nahrung, ohne das Verdauungssystem zu belasten.</p>
+<p>Über 50&nbsp;% wasserlösliche Ballaststoffe und mehr als 30&nbsp;% bioaktivierte Mikrofasern – u.a. mit Akazienfaser. <span class="hide-mobile">Sie dienen deiner Darmflora als gezielte Nahrung, ohne das Verdauungssystem zu belasten.</span></p>
 </div>
 </div>
 <p class="facts-disclaimer">Alle Angaben beziehen sich auf unsere Fermentmischung.</p>
@@ -1142,14 +1157,14 @@ input.focus();
 <span class="science-feature-dot"></span>
 <div>
 <strong>Reich an Postbiotika & SCFAs</strong>
-<span>FermentBites enthält keine lebenden Kulturen, sondern deren wertvolle Stoffwechselprodukte. Die enthaltenen kurzkettigen Fettsäuren (SCFAs) wie Acetat und Butyrat dienen den Darmzellen direkt als sanfter Baustein.</span>
+<span>FermentBites enthält keine lebenden Kulturen, sondern deren wertvolle Stoffwechselprodukte. <span class="hide-mobile">Die enthaltenen kurzkettigen Fettsäuren (SCFAs) wie Acetat und Butyrat dienen den Darmzellen direkt als sanfter Baustein.</span></span>
 </div>
 </div>
 <div class="science-feature">
 <span class="science-feature-dot"></span>
 <div>
 <strong>Extra Ballaststoff-Power</strong>
-<span>Akazienfaser erhöht den Anteil löslicher Ballaststoffe auf über 50&nbsp;%. Die feinen Mikrofasern dienen deiner Nützlingsflora im Darm als gezielte Nahrung – ohne den Magen-Darm-Trakt zu belasten.</span>
+<span>Akazienfaser erhöht den Anteil löslicher Ballaststoffe auf über 50&nbsp;%. <span class="hide-mobile">Die feinen Mikrofasern dienen deiner Nützlingsflora im Darm als gezielte Nahrung – ohne den Magen-Darm-Trakt zu belasten.</span></span>
 </div>
 </div>
 </div>
