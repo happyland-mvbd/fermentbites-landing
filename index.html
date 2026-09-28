@@ -919,9 +919,41 @@ font-family:'MaisonNeueBookItalic','MaisonNeueBook',sans-serif;
 font-style:normal;
 }
 
+/* ---------- Fakten-Karten: Titel immer sichtbar, Text ausklappbar (mobile) ---------- */
+.fact-card-toggle{
+display:block;
+width:100%;
+background:none;
+border:none;
+padding:0;
+margin:0;
+text-align:left;
+font:inherit;
+}
+.fact-card-icon{display:none;}
+
 /* ---------- MOBILE: kompakteres Layout + weniger Text ---------- */
 @media (max-width:640px){
 .hide-mobile{display:none;}
+.fact-card-toggle{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:0.5rem;}
+.fact-card-icon{
+display:flex;
+flex-shrink:0;
+width:20px;
+height:20px;
+border-radius:50%;
+border:1.5px solid var(--rust);
+color:var(--rust);
+align-items:center;
+justify-content:center;
+font-size:0.9rem;
+font-weight:700;
+line-height:1;
+transition:transform .2s ease;
+}
+.fact-card.open .fact-card-icon{transform:rotate(45deg);}
+.fact-card:not(.open) p{display:none;}
+.fact-card p{margin-top:0.5rem;}
 .hero{padding:5vh 6vw 6vh;}
 .usp-row{gap:0.4rem;}
 .usp-pill{font-size:0.72rem;padding:0.4rem 0.8rem;}
@@ -1131,20 +1163,20 @@ input.focus();
 <div class="facts-inner">
 <div class="science-facts">
 <div class="fact-card">
-<h4>Bioaktivierte Pflanzenstoffe</h4>
-<p>Liefert wertvolle Polyphenole aus 30+ Früchten und Gemüsesorten. <span class="hide-mobile">Der Fermentationsprozess spaltet diese pflanzlichen Antioxidantien auf und macht sie so besonders leicht für den Körper verfügbar.</span></p>
+<button type="button" class="fact-card-toggle" aria-expanded="false"><h4>Bioaktivierte Pflanzenstoffe</h4><span class="fact-card-icon">+</span></button>
+<p>Liefert wertvolle Polyphenole aus 30+ Früchten und Gemüsesorten. Der Fermentationsprozess spaltet diese pflanzlichen Antioxidantien auf und macht sie so besonders leicht für den Körper verfügbar.</p>
 </div>
 <div class="fact-card">
-<h4>Kurzkettige Fettsäuren</h4>
-<p>Enthält bereits vorgeformte kurzkettige Fettsäuren (SCFAs) wie Acetat und Butyrat. <span class="hide-mobile">Diese entstehen sonst erst mühevoll bei der Bakterienfermentation im Dickdarm und stehen den Darmzellen hier direkt als Bausteine zur Verfügung.</span></p>
+<button type="button" class="fact-card-toggle" aria-expanded="false"><h4>Kurzkettige Fettsäuren</h4><span class="fact-card-icon">+</span></button>
+<p>Enthält bereits vorgeformte kurzkettige Fettsäuren (SCFAs) wie Acetat und Butyrat. Diese entstehen sonst erst mühevoll bei der Bakterienfermentation im Dickdarm und stehen den Darmzellen hier direkt als Bausteine zur Verfügung.</p>
 </div>
 <div class="fact-card">
-<h4>Keine lebenden Kulturen</h4>
-<p>Durch die Fermentation entstehen Postbiotika. Anders als Probiotika enthalten sie keine lebenden Kulturen. <span class="hide-mobile">Das macht sie besonders stabil, unempfindlich gegenüber Magensäure und gut verträglich.</span></p>
+<button type="button" class="fact-card-toggle" aria-expanded="false"><h4>Keine lebenden Kulturen</h4><span class="fact-card-icon">+</span></button>
+<p>Durch die Fermentation entstehen Postbiotika. Anders als Probiotika enthalten sie keine lebenden Kulturen. Das macht sie besonders stabil, unempfindlich gegenüber Magensäure und gut verträglich.</p>
 </div>
 <div class="fact-card">
-<h4>Schonende Ballaststoffe</h4>
-<p>Über 50&nbsp;% wasserlösliche Ballaststoffe und mehr als 30&nbsp;% bioaktivierte Mikrofasern – u.a. mit Akazienfaser. <span class="hide-mobile">Sie dienen deiner Darmflora als gezielte Nahrung, ohne das Verdauungssystem zu belasten.</span></p>
+<button type="button" class="fact-card-toggle" aria-expanded="false"><h4>Schonende Ballaststoffe</h4><span class="fact-card-icon">+</span></button>
+<p>Über 50&nbsp;% wasserlösliche Ballaststoffe und mehr als 30&nbsp;% bioaktivierte Mikrofasern – u.a. mit Akazienfaser. Sie dienen deiner Darmflora als gezielte Nahrung, ohne das Verdauungssystem zu belasten.</p>
 </div>
 </div>
 <p class="facts-disclaimer">Alle Angaben beziehen sich auf unsere Fermentmischung.</p>
@@ -1557,6 +1589,16 @@ section.classList.toggle('open', willOpenSI);
 scienceIntroToggle.setAttribute('aria-expanded', String(willOpenSI));
 });
 }
+
+// Fakten-Karten (fact-card) ausklappen
+document.querySelectorAll('.fact-card-toggle').forEach(function(fcBtn){
+fcBtn.addEventListener('click', function(){
+var card = fcBtn.closest('.fact-card');
+var willOpenFC = !card.classList.contains('open');
+card.classList.toggle('open', willOpenFC);
+fcBtn.setAttribute('aria-expanded', String(willOpenFC));
+});
+});
 
 // -------------------------------------------------------------
 // KLAVIYO INTEGRATION – eingerichtet & getestet (Status 202)
