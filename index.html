@@ -932,6 +932,32 @@ font:inherit;
 }
 .fact-card-icon{display:none;}
 
+/* ---------- Fermentmischung: ein-/ausklappbar (nur mobile) ---------- */
+.science-intro-toggle{
+display:inline-flex;
+align-items:center;
+gap:0.5rem;
+background:none;
+border:none;
+font-family:'MaisonNeueMonoRegular',monospace;
+padding:0;
+}
+.science-intro-toggle-icon{
+display:none;
+flex-shrink:0;
+width:22px;
+height:22px;
+border-radius:50%;
+border:1.5px solid var(--lime);
+color:var(--lime);
+align-items:center;
+justify-content:center;
+font-size:1rem;
+font-weight:700;
+line-height:1;
+transition:transform .2s ease;
+}
+
 /* ---------- MOBILE: kompakteres Layout + weniger Text ---------- */
 @media (max-width:640px){
 .hide-mobile{display:none;}
@@ -968,34 +994,8 @@ transition:transform .2s ease;
 .science-intro{padding:5vh 6vw;}
 .faq-section{padding:0 6vw 5vh;}
 .fact-card p,.product-copy p,.science-feature span{font-size:0.88rem;line-height:1.5;}
-}
-
-/* ---------- Fermentmischung: ein-/ausklappbar ---------- */
-.science-intro-toggle{
-display:inline-flex;
-align-items:center;
-gap:0.5rem;
-background:none;
-border:none;
-cursor:pointer;
-font-family:'MaisonNeueMonoRegular',monospace;
-padding:0;
-}
-.science-intro-toggle-icon{
-flex-shrink:0;
-width:22px;
-height:22px;
-border-radius:50%;
-border:1.5px solid var(--lime);
-color:var(--lime);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:1rem;
-font-weight:700;
-line-height:1;
-transition:transform .2s ease;
-}
+.science-intro-toggle{cursor:pointer;}
+.science-intro-toggle-icon{display:flex;}
 .science-intro.open .science-intro-toggle-icon{transform:rotate(45deg);}
 .science-intro:not(.open) .science-intro-text h3,
 .science-intro:not(.open) .science-intro-text p,
@@ -1008,6 +1008,8 @@ grid-template-columns:1fr;
 justify-items:center;
 text-align:center;
 }
+}
+
 </style>
 <!-- Google Consent Mode v2: Speicherung/Cookies sind standardmäßig deaktiviert, bis eine Einwilligung vorliegt -->
 <script>
