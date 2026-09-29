@@ -1109,7 +1109,7 @@ input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ tryUnlock(
 <span class="usp-pill">100% natürlich</span>
 </div>
 
-<a class="cta-btn" href="#signup">Bleib am Ball - Sign up!</a>
+<a class="cta-btn" href="#signup">Jetzt Platz sichern →</a>
 
 <div class="socials">
 <span class="socials-label">Folge uns für Updates</span>
@@ -1231,56 +1231,216 @@ input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ tryUnlock(
 
 <section class="signup-section" id="signup">
 <div class="signup-card">
-<h2>Trag dich in ein und gehe mit uns live.</h2>
-<p class="event-note">📍 Wir sind am 9. &amp; 10. Oktober 2026 mit einem Stand auf der <strong><a href="https://www.berlinfoodweek.de/festival/house-of-food/" target="_blank" rel="noopener">Berlin Food Week</a></strong> im BIKINI Berlin – komm vorbei und probiere FERMENTBITES exklusiv als Erste:r.</p>
 
-<form class="signup" id="signupForm">
-<div class="field-row">
-<div class="field">
-<label for="firstNameInput">Vorname</label>
-<input type="text" id="firstNameInput" name="firstName" placeholder="Vorname" autocomplete="given-name" required>
-</div>
-<div class="field">
-<label for="lastNameInput">Nachname</label>
-<input type="text" id="lastNameInput" name="lastName" placeholder="Nachname" autocomplete="family-name" required>
-</div>
+<p class="waitlist-eyebrow">ERSTE CHARGE &middot; LIMITIERT AUF 1.000 DOSEN</p>
+<h2>Sichere dir eine Dose aus der ersten Charge.</h2>
+<p>Wir produzieren unsere allererste Charge in einer festen Stückzahl: 1.000 Dosen. Trag dich unverbindlich ein &ndash; ganz ohne Zahlung jetzt &ndash; und du bekommst als Erste:r eine E-Mail, sobald du deinen Platz final sichern kannst.</p>
+
+<div class="event-note">
+📍 Wir sind am 9. &amp; 10. Oktober 2026 mit einem Stand auf der <a href="https://www.berlinfoodweek.de/festival/house-of-food/" target="_blank" rel="noopener">Berlin Food Week</a> im BIKINI Berlin &ndash; komm vorbei und probiere FERMENTBITES exklusiv als Erste:r.
 </div>
 
+<div class="waitlist-layout">
+
+<div class="waitlist-product">
+<img src="images/produkt.jpg" alt="FERMENTBITES Dose" class="waitlist-product-img">
+<div class="waitlist-price-card">
+<div class="waitlist-price-row"><span class="waitlist-price-amount">59,90&nbsp;€</span><span class="waitlist-price-unit">/ Dose</span></div>
+<p class="waitlist-price-detail">60 Bites &middot; 1-Monats-Routine &middot; 2 Bites pro Tag<br>inkl. MwSt., zzgl. Versand</p>
+<p class="waitlist-stock"><strong id="waitlist-remaining">1.000</strong> von 1.000 Dosen der ersten Charge noch verfügbar</p>
+</div>
+</div>
+
+<div class="waitlist-form-wrap">
+
+<div class="waitlist-choice" role="radiogroup" aria-label="Wie möchtest du dabei sein?">
+<p class="waitlist-choice-label">Wie möchtest du dabei sein?</p>
+
+<label class="waitlist-choice-option" for="choice-waitlist">
+<input type="radio" name="signup_type" id="choice-waitlist" value="waitlist">
+<span class="waitlist-choice-card">
+<span class="waitlist-choice-title">🧴 Dose sichern (Warteliste)</span>
+<span class="waitlist-choice-desc">Ich möchte mir eine Dose aus der ersten Charge vormerken &ndash; unverbindlich, ohne Zahlung. 59,90&nbsp;€ pro Dose, wenn ich später zuschlage.</span>
+</span>
+</label>
+
+<label class="waitlist-choice-option" for="choice-newsletter">
+<input type="radio" name="signup_type" id="choice-newsletter" value="newsletter">
+<span class="waitlist-choice-card">
+<span class="waitlist-choice-title">📬 Nur Newsletter</span>
+<span class="waitlist-choice-desc">Ich möchte erstmal nur Neuigkeiten zu FERMENTBITES per E-Mail bekommen, ohne mir eine Dose vorzumerken.</span>
+</span>
+</label>
+
+</div>
+
+<form class="signup" id="signup-form">
 <div class="field-row">
 <div class="field">
-<label for="emailInput">E-Mail</label>
-<input type="email" id="emailInput" name="email" placeholder="deine@email.com" autocomplete="email" required>
+<label for="f-vorname">Vorname</label>
+<input type="text" id="f-vorname" name="first_name" placeholder="Vorname" required>
 </div>
 <div class="field">
-<label for="ageGroupInput">Altersgruppe</label>
-<select id="ageGroupInput" name="ageGroup" required>
+<label for="f-nachname">Nachname</label>
+<input type="text" id="f-nachname" name="last_name" placeholder="Nachname" required>
+</div>
+</div>
+<div class="field-row">
+<div class="field">
+<label for="f-email">E-Mail</label>
+<input type="email" id="f-email" name="email" placeholder="deine@email.com" required>
+</div>
+<div class="field">
+<label for="f-altersgruppe">Altersgruppe</label>
+<select id="f-altersgruppe" name="age_group" required>
 <option value="" disabled selected>Bitte wählen</option>
-<option value="18-24">18–24</option>
-<option value="25-34">25–34</option>
-<option value="35-44">35–44</option>
-<option value="45-54">45–54</option>
+<option value="18-24">18&ndash;24</option>
+<option value="25-34">25&ndash;34</option>
+<option value="35-44">35&ndash;44</option>
+<option value="45-54">45&ndash;54</option>
 <option value="55+">55+</option>
 </select>
 </div>
 </div>
-
-<div class="field-row">
+<div class="field-row waitlist-field-row-single">
 <div class="field">
-<label for="plzInput">Postleitzahl</label>
-<input type="text" id="plzInput" name="plz" placeholder="z. B. 10115" inputmode="numeric" pattern="[0-9]{4,5}" autocomplete="postal-code" required>
+<label for="f-plz">Postleitzahl</label>
+<input type="text" id="f-plz" name="postal_code" placeholder="z. B. 10115" inputmode="numeric" required>
 </div>
 </div>
 
-<button type="submit" id="submitBtn">Bite by Bite - Haltet mich auf dem Laufenden!</button>
+<button type="submit" id="signup-submit" disabled>Bitte wähle eine Option</button>
 
-<p class="consent">
-Mit Klick auf „Bite by Bite - Haltet mich auf dem Laufenden!" stimmst du zu, dass wir dir Neuigkeiten rund um den Launch von FERMENTBITES per E-Mail schicken (Double-Opt-in). Abmeldung jederzeit möglich. Mehr dazu in unserer
-<a href="#" data-modal="datenschutz-modal">Datenschutzerklärung</a>.
-</p>
-<p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+<p class="waitlist-nonbinding" id="waitlist-nonbinding" hidden>Das ist noch keine verbindliche Bestellung. Sobald deine Dose bereit ist, bekommst du eine E-Mail, mit der du final entscheidest und bestellst.</p>
+
+<p class="consent">Mit dem Absenden bestätigst du, dass wir dich per E-Mail zu FERMENTBITES kontaktieren dürfen (Double-Opt-in) &ndash; je nach Auswahl zur Warteliste für die erste Charge oder mit allgemeinen Neuigkeiten. Abmeldung jederzeit möglich. Mehr dazu in unserer <a href="#datenschutz">Datenschutzerklärung</a>.</p>
+
+<p class="form-msg" id="signup-msg"></p>
 </form>
+
+</div>
+</div>
+
 </div>
 </section>
+
+<style>
+/* ---------- WAITLIST ADD-ON STYLES ---------- */
+.waitlist-eyebrow{font-family:'MaisonNeueMonoRegular',monospace;letter-spacing:0.08em;color:var(--rust);font-size:0.78rem;margin:0 auto 0.6rem;text-align:center;}
+.waitlist-layout{display:grid;grid-template-columns:280px 1fr;gap:2.4rem;max-width:760px;margin:2rem auto 0;text-align:left;align-items:start;}
+.waitlist-product{display:flex;flex-direction:column;gap:1rem;position:sticky;top:1.5rem;}
+.waitlist-product-img{width:100%;border-radius:18px;display:block;box-shadow:0 12px 30px rgba(94,36,24,0.18);}
+.waitlist-price-card{background:rgba(94,36,24,0.06);border:1px solid rgba(94,36,24,0.16);border-radius:16px;padding:1.1rem 1.2rem;}
+.waitlist-price-row{display:flex;align-items:baseline;gap:0.4rem;margin-bottom:0.5rem;}
+.waitlist-price-amount{font-family:'MaisonNeueBook',sans-serif;font-size:1.6rem;font-weight:700;color:var(--maroon);}
+.waitlist-price-unit{font-size:0.85rem;color:#6b5a4a;}
+.waitlist-price-detail{font-size:0.82rem;color:#6b5a4a;line-height:1.5;margin:0 0 0.7rem;}
+.waitlist-stock{font-size:0.82rem;color:var(--rust);margin:0;border-top:1px solid rgba(94,36,24,0.14);padding-top:0.6rem;}
+.waitlist-form-wrap{min-width:0;}
+.waitlist-choice{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.2rem;}
+.waitlist-choice-label{font-size:0.8rem;font-weight:600;color:#5a4a3a;margin:0 0 0.2rem;}
+.waitlist-choice-option{display:block;cursor:pointer;}
+.waitlist-choice-option input{position:absolute;opacity:0;width:1px;height:1px;}
+.waitlist-choice-card{display:block;border:1.5px solid rgba(94,36,24,0.2);border-radius:14px;padding:0.8rem 1rem;transition:border-color .15s ease, background .15s ease;}
+.waitlist-choice-title{display:block;font-weight:700;color:var(--maroon);font-size:0.95rem;margin-bottom:0.25rem;}
+.waitlist-choice-desc{display:block;font-size:0.82rem;color:#6b5a4a;line-height:1.45;}
+.waitlist-choice-option input:checked + .waitlist-choice-card{border-color:var(--rust);background:rgba(154,58,34,0.07);}
+.waitlist-choice-option input:focus-visible + .waitlist-choice-card{outline:2px solid var(--rust);outline-offset:2px;}
+.waitlist-field-row-single{grid-template-columns:1fr !important;}
+.waitlist-nonbinding{margin-top:0.9rem;font-size:0.82rem;color:#6b5a4a;line-height:1.5;background:rgba(94,36,24,0.05);border-radius:10px;padding:0.7rem 0.85rem;}
+@media (max-width:760px){.waitlist-layout{grid-template-columns:1fr;max-width:420px;}.waitlist-product{position:static;}}
+</style>
+
+<script>
+(function(){
+var KLAVIYO_COMPANY_ID = "REPLACE_ME_COMPANY_ID";
+var LIST_ID_WAITLIST = "TRzpKD";
+var LIST_ID_NEWSLETTER = "Y2gH36";
+var form = document.getElementById('signup-form');
+if(!form) return;
+var radios = document.querySelectorAll('input[name="signup_type"]');
+var submitBtn = document.getElementById('signup-submit');
+var nonBinding = document.getElementById('waitlist-nonbinding');
+var msg = document.getElementById('signup-msg');
+function updateChoiceUI(){
+var selected = null;
+radios.forEach(function(r){ if(r.checked) selected = r.value; });
+if(selected === 'waitlist'){
+submitBtn.disabled = false;
+submitBtn.textContent = 'Ja, meine Dose vormerken';
+nonBinding.hidden = false;
+} else if(selected === 'newsletter'){
+submitBtn.disabled = false;
+submitBtn.textContent = 'Nur Newsletter abonnieren';
+nonBinding.hidden = true;
+} else {
+submitBtn.disabled = true;
+submitBtn.textContent = 'Bitte wähle eine Option';
+nonBinding.hidden = true;
+}
+}
+radios.forEach(function(r){ r.addEventListener('change', updateChoiceUI); });
+updateChoiceUI();
+form.addEventListener('submit', function(e){
+e.preventDefault();
+var selected = null;
+radios.forEach(function(r){ if(r.checked) selected = r.value; });
+if(!selected){ return; }
+var email = document.getElementById('f-email').value.trim();
+var firstName = document.getElementById('f-vorname').value.trim();
+var lastName = document.getElementById('f-nachname').value.trim();
+var ageGroup = document.getElementById('f-altersgruppe').value;
+var plz = document.getElementById('f-plz').value.trim();
+var listId = selected === 'waitlist' ? LIST_ID_WAITLIST : LIST_ID_NEWSLETTER;
+var payload = {
+data: {
+type: "client-subscription",
+attributes: {
+email: email,
+profile: {
+first_name: firstName,
+last_name: lastName,
+location: { zip: plz },
+custom_properties: {
+"Altersgruppe": ageGroup,
+"Warteliste erste Charge": selected === 'waitlist'
+}
+},
+subscriptions: { email: { marketing: { consent: "SUBSCRIBED" } } },
+list_id: listId
+}
+}
+};
+submitBtn.disabled = true;
+var prevLabel = submitBtn.textContent;
+submitBtn.textContent = 'Wird gesendet...';
+msg.textContent = '';
+msg.className = 'form-msg';
+fetch('https://a.klaviyo.com/client/subscriptions?company_id=' + KLAVIYO_COMPANY_ID, {
+method: 'POST',
+headers: { 'Content-Type': 'application/vnd.api+json', 'revision': '2026-07-15' },
+body: JSON.stringify(payload)
+}).then(function(res){
+if(res.ok || res.status === 202){
+msg.textContent = selected === 'waitlist'
+? 'Danke! Check gleich dein Postfach und bestätige deine Anmeldung – dann bist du auf der Warteliste.'
+: 'Danke! Check gleich dein Postfach und bestätige deine Anmeldung.';
+msg.className = 'form-msg success';
+form.reset();
+updateChoiceUI();
+} else {
+throw new Error('Klaviyo request failed with status ' + res.status);
+}
+}).catch(function(err){
+msg.textContent = 'Da ist etwas schiefgelaufen. Bitte versuch es gleich noch einmal.';
+msg.className = 'form-msg error';
+submitBtn.disabled = false;
+submitBtn.textContent = prevLabel;
+});
+});
+})();
+</script>
+
 
 <section class="faq-section" id="faq">
 <div class="faq-inner">
