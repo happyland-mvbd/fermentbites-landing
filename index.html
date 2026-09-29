@@ -1040,6 +1040,7 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 });
 </script>
+<script src="https://static.klaviyo.com/onsite/js/YcmHMF/klaviyo.js"></script>
 </head>
 <body>
 
@@ -1402,13 +1403,6 @@ function buildPayload(listId){
             type: "profile",
             attributes: {
               email: email,
-              first_name: firstName,
-              last_name: lastName,
-              location: { zip: plz },
-              properties: {
-                "Altersgruppe": ageGroup,
-                "Warteliste erste Charge": selected === 'waitlist'
-              },
               subscriptions: { email: { marketing: { consent: "SUBSCRIBED" } } }
             }
           }
@@ -1419,6 +1413,16 @@ function buildPayload(listId){
       }
     }
   };
+}
+if(window.klaviyo && typeof window.klaviyo.identify === 'function'){
+  window.klaviyo.identify({
+    email: email,
+    first_name: firstName,
+    last_name: lastName,
+    zip: plz,
+    "Altersgruppe": ageGroup,
+    "Warteliste erste Charge": selected === 'waitlist'
+  });
 }
 submitBtn.disabled = true;
 var prevLabel = submitBtn.textContent;
