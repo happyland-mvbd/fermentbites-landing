@@ -1393,23 +1393,30 @@ var ageGroup = document.getElementById('f-altersgruppe').value;
 var plz = document.getElementById('f-plz').value.trim();
 var listId = selected === 'waitlist' ? LIST_ID_WAITLIST : LIST_ID_NEWSLETTER;
 var payload = {
-data: {
-type: "client-subscription",
-attributes: {
-email: email,
-profile: {
-first_name: firstName,
-last_name: lastName,
-location: { zip: plz },
-custom_properties: {
-"Altersgruppe": ageGroup,
-"Warteliste erste Charge": selected === 'waitlist'
-}
-},
-subscriptions: { email: { marketing: { consent: "SUBSCRIBED" } } },
-list_id: listId
-}
-}
+  data: {
+    type: "subscription",
+    attributes: {
+      profile: {
+        data: {
+          type: "profile",
+          attributes: {
+            email: email,
+            first_name: firstName,
+            last_name: lastName,
+            location: { zip: plz },
+            properties: {
+              "Altersgruppe": ageGroup,
+              "Warteliste erste Charge": selected === 'waitlist'
+            },
+            subscriptions: { email: { marketing: { consent: "SUBSCRIBED" } } }
+          }
+        }
+      }
+    },
+    relationships: {
+      list: { data: { type: "list", id: listId } }
+    }
+  }
 };
 submitBtn.disabled = true;
 var prevLabel = submitBtn.textContent;
