@@ -863,17 +863,6 @@ color:#6b5a4a;
 }
 
 
-#pw-gate{position:fixed;inset:0;z-index:99999;background:var(--cream);display:flex;align-items:center;justify-content:center;padding:24px;}
-#pw-gate.is-hidden{display:none;}
-#pw-gate .pw-gate-card{max-width:380px;width:100%;text-align:center;}
-#pw-gate .pw-gate-card h1{font-family:'MaisonNeueBook',sans-serif;text-transform:uppercase;color:var(--rust);font-size:1.4rem;margin:0 0 0.8rem;}
-#pw-gate .pw-gate-card p{color:#5a4a3a;font-size:0.95rem;margin:0 0 1.5rem;}
-#pw-gate input[type=password]{width:100%;padding:0.9rem 1.1rem;border-radius:12px;border:1px solid rgba(94,36,24,0.25);font-size:1rem;margin-bottom:0.8rem;box-sizing:border-box;font-family:'MaisonNeueBook',sans-serif;}
-#pw-gate button{width:100%;padding:1rem 1.6rem;border-radius:999px;border:none;background:var(--maroon);color:var(--cream);font-family:'MaisonNeueBook',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;}
-#pw-gate button:hover{background:var(--rust);}
-#pw-gate .pw-gate-error{color:#b0402a;font-size:0.85rem;margin-top:0.7rem;min-height:1.2em;}
-body.pw-locked{overflow:hidden;}
-
 #cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:var(--ink);color:var(--cream);padding:20px 24px;box-shadow:0 -4px 24px rgba(0,0,0,0.25);transform:translateY(100%);opacity:0;pointer-events:none;transition:transform .3s ease, opacity .3s ease;}
 #cookie-banner.is-visible{transform:translateY(0);opacity:1;pointer-events:auto;}
 #cookie-banner .cookie-banner-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
@@ -1043,50 +1032,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="https://static.klaviyo.com/onsite/js/YcmHMF/klaviyo.js"></script>
 </head>
 <body>
-
-<div id="pw-gate">
-<div class="pw-gate-card">
-<h1>Noch nicht ganz da</h1>
-<p>Diese Seite ist aktuell privat. Bitte gib das Passwort ein, um fortzufahren.</p>
-<input type="password" id="pw-gate-input" placeholder="Passwort" autocomplete="off">
-<button type="button" id="pw-gate-submit">Entsperren</button>
-<div class="pw-gate-error" id="pw-gate-error"></div>
-</div>
-</div>
-<script>
-(function(){
-var GATE_PW = "FERMENTBITES2026!";
-var gate = document.getElementById('pw-gate');
-var input = document.getElementById('pw-gate-input');
-var btn = document.getElementById('pw-gate-submit');
-var err = document.getElementById('pw-gate-error');
-function unlock(){
-gate.classList.add('is-hidden');
-document.body.classList.remove('pw-locked');
-try{ sessionStorage.setItem('fb_unlocked','1'); }catch(e){}
-}
-function tryUnlock(){
-if(input.value === GATE_PW){
-unlock();
-} else {
-err.textContent = 'Falsches Passwort.';
-input.value = '';
-input.focus();
-}
-}
-try{
-if(sessionStorage.getItem('fb_unlocked') === '1'){
-gate.classList.add('is-hidden');
-} else {
-document.body.classList.add('pw-locked');
-}
-}catch(e){
-document.body.classList.add('pw-locked');
-}
-btn.addEventListener('click', tryUnlock);
-input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ tryUnlock(); } });
-})();
-</script>
 
 <section class="hero">
 <div class="blob blob-1"></div>
