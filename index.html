@@ -1249,7 +1249,7 @@ input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ tryUnlock(
 <div class="waitlist-price-card">
 <div class="waitlist-price-row"><span class="waitlist-price-amount">59,90&nbsp;€</span><span class="waitlist-price-unit">/ Dose</span></div>
 <p class="waitlist-price-detail">60 Bites &middot; 1-Monats-Routine &middot; 2 Bites pro Tag<br>inkl. MwSt., zzgl. Versand</p>
-<p class="waitlist-stock"><strong id="waitlist-remaining">1.000</strong> von 1.000 Dosen der ersten Charge noch verfügbar</p>
+<p class="waitlist-stock">Mit deiner Vormerkung sicherst du dir bevorzugten Zugang zu allen künftigen Chargen &ndash; wir produzieren bewusst in kleinen Mengen für maximale Frische und Qualität, daher bleiben die Stückzahlen immer limitiert.</p>
 </div>
 </div>
 
@@ -1281,12 +1281,14 @@ input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ tryUnlock(
 <input type="checkbox" name="flavor" id="flavor-himbeere" value="Himbeere">
 <span class="waitlist-flavor-card">
 <span class="waitlist-flavor-title">🍓 Himbeere</span>
+<span class="waitlist-flavor-stock"><strong id="waitlist-remaining-himbeere">500</strong> von 500 Dosen verfügbar</span>
 </span>
 </label>
 <label class="waitlist-flavor-option">
 <input type="checkbox" name="flavor" id="flavor-citrus" value="Citrus">
 <span class="waitlist-flavor-card">
 <span class="waitlist-flavor-title">🍋 Citrus</span>
+<span class="waitlist-flavor-stock"><strong id="waitlist-remaining-citrus">500</strong> von 500 Dosen verfügbar</span>
 </span>
 </label>
 <p class="waitlist-flavor-hint" id="waitlist-flavor-hint">Wähle eine Sorte oder beide Sorten &ndash; bei beiden reservierst du dir automatisch je eine Dose (also 2&nbsp;Dosen insgesamt).</p>
@@ -1370,7 +1372,8 @@ input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ tryUnlock(
 .waitlist-flavor-choice[hidden]{display:none;}
 .waitlist-flavor-option{display:flex;align-items:center;cursor:pointer;}
 .waitlist-flavor-option input{position:absolute;opacity:0;width:1px;height:1px;}
-.waitlist-flavor-card{display:flex;align-items:center;border:1.5px solid rgba(94,36,24,0.2);border-radius:14px;padding:0.6rem 1rem;transition:border-color .15s ease,background .15s ease;width:100%;}
+.waitlist-flavor-card{display:flex;flex-direction:column;align-items:flex-start;gap:0.25rem;border:1.5px solid rgba(94,36,24,0.2);border-radius:14px;padding:0.6rem 1rem;transition:border-color .15s ease,background .15s ease;width:100%;}
+.waitlist-flavor-stock{font-size:0.78rem;color:#6b5a4a;}
 .waitlist-flavor-title{font-weight:700;color:var(--maroon);font-size:0.95rem;}
 .waitlist-flavor-option input:checked + .waitlist-flavor-card{border-color:var(--rust);background:rgba(154,58,34,0.07);}
 .waitlist-flavor-option input:focus-visible + .waitlist-flavor-card{outline:2px solid var(--rust);outline-offset:2px;}
