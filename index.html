@@ -1281,14 +1281,14 @@ input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ tryUnlock(
 <input type="checkbox" name="flavor" id="flavor-himbeere" value="Himbeere">
 <span class="waitlist-flavor-card">
 <span class="waitlist-flavor-title">🍓 Himbeere</span>
-<span class="waitlist-flavor-stock"><strong id="waitlist-remaining-himbeere">500</strong> von 500 Dosen verfügbar</span>
+<span class="waitlist-flavor-stock"><strong id="waitlist-remaining-himbeere">481</strong> von 500 Dosen verfügbar</span>
 </span>
 </label>
 <label class="waitlist-flavor-option">
 <input type="checkbox" name="flavor" id="flavor-citrus" value="Citrus">
 <span class="waitlist-flavor-card">
 <span class="waitlist-flavor-title">🍋 Citrus</span>
-<span class="waitlist-flavor-stock"><strong id="waitlist-remaining-citrus">500</strong> von 500 Dosen verfügbar</span>
+<span class="waitlist-flavor-stock"><strong id="waitlist-remaining-citrus">469</strong> von 500 Dosen verfügbar</span>
 </span>
 </label>
 <p class="waitlist-flavor-hint" id="waitlist-flavor-hint">Wähle eine Sorte oder beide Sorten &ndash; bei beiden reservierst du dir automatisch je eine Dose (also 2&nbsp;Dosen insgesamt).</p>
@@ -1395,6 +1395,27 @@ var nonBinding = document.getElementById('waitlist-nonbinding');
 var flavorChoice = document.getElementById('waitlist-flavor-choice');
 var flavorInputs = document.querySelectorAll('input[name="flavor"]');
 var msg = document.getElementById('signup-msg');
+var STOCK_DEFAULTS = { 'Himbeere': 481, 'Citrus': 469 };
+var stockEls = { 'Himbeere': document.getElementById('waitlist-remaining-himbeere'), 'Citrus': document.getElementById('waitlist-remaining-citrus') };
+var stockKeys = { 'Himbeere': 'fb_stock_himbeere', 'Citrus': 'fb_stock_citrus' };
+function getStock(flavor){
+var v = null;
+try { v = localStorage.getItem(stockKeys[flavor]); } catch(e) {}
+if(v !== null){ var n = parseInt(v, 10); if(!isNaN(n)) return n; }
+return STOCK_DEFAULTS[flavor];
+}
+function renderStock(flavor){
+var el = stockEls[flavor];
+if(el) el.textContent = getStock(flavor);
+}
+function decrementStock(flavor){
+var n = getStock(flavor);
+if(n > 0) n -= 1;
+try { localStorage.setItem(stockKeys[flavor], String(n)); } catch(e) {}
+renderStock(flavor);
+}
+renderStock('Himbeere');
+renderStock('Citrus');
 function updateChoiceUI(){
 var selected = null;
 radios.forEach(function(r){ if(r.checked) selected = r.value; });
@@ -1492,6 +1513,7 @@ msg.textContent = selected === 'waitlist'
 ? 'Danke! Check gleich dein Postfach und bestätige deine Anmeldung – dann bist du auf der Warteliste (' + flavors.join(' & ') + ') und im Newsletter.'
 : 'Danke! Check gleich dein Postfach und bestätige deine Anmeldung.';
     msg.className = 'form-msg success';
+flavors.forEach(function(fl){ decrementStock(fl); });
     form.reset();
     updateChoiceUI();
   } else {
