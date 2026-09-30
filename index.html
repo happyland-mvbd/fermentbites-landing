@@ -45,6 +45,8 @@ font-display:swap;
 --purple:#6b4e9e;
 --teal:#2f7a78;
 --coral:#d14b2e;
+--mustard:#e0a526;
+--mustard-dark:#b8850f;
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -866,8 +868,8 @@ color:#6b5a4a;
 .inline-badge-btn{
 display:inline-flex;
 align-items:center;
-background:var(--maroon);
-color:var(--cream);
+background:var(--mustard);
+color:var(--ink);
 border:none;
 border-radius:999px;
 padding:0.2rem 0.9rem;
@@ -880,8 +882,20 @@ cursor:pointer;
 vertical-align:middle;
 transition:background .15s ease, transform .15s ease;
 }
-.inline-badge-btn:hover{background:var(--rust);transform:translateY(-1px);}
-.inline-badge-btn:focus-visible{outline:2px solid var(--rust);outline-offset:2px;}
+.inline-badge-btn:hover{background:var(--mustard-dark);transform:translateY(-1px);}
+.inline-badge-btn:focus-visible{outline:2px solid var(--mustard-dark);outline-offset:2px;}
+
+.fraunhofer-logo{
+display:block;
+max-width:240px;
+width:65%;
+height:auto;
+margin:0 0 1rem;
+}
+#fraunhofer-modal p{
+font-size:1.3rem;
+line-height:1.6;
+}
 
 #cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:var(--ink);color:var(--cream);padding:20px 24px;box-shadow:0 -4px 24px rgba(0,0,0,0.25);transform:translateY(100%);opacity:0;pointer-events:none;transition:transform .3s ease, opacity .3s ease;}
 #cookie-banner.is-visible{transform:translateY(0);opacity:1;pointer-events:auto;}
@@ -1746,7 +1760,7 @@ Diese Website wird bei der united-domains GmbH, Gautinger Straße 10, 82319 Star
 <div class="modal-overlay" id="fraunhofer-modal">
 <div class="modal">
 <button class="modal-close" data-close aria-label="Schließen">&times;</button>
-<h2>Fraunhofer Institut IVV</h2>
+<img src="images/fraunhofer-logo.png" alt="Fraunhofer Institut IVV" class="fraunhofer-logo">
 <p>Gemeinsam mit dem Fraunhofer Institut IVV entwickeln wir jeden Bite – von der Rezeptur bis zur Prozessführung. Fraunhofer ist Europas größte Organisation für angewandte Forschung.</p>
 </div>
 </div>
