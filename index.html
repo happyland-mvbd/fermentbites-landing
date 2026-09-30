@@ -302,6 +302,56 @@ color:#8a7a68;
 margin:0.9rem 0 0;
 text-align:center;
 }
+.produce-slider-section{
+background:var(--cream);
+padding:0.5vh 0 3.5vh;
+overflow:hidden;
+}
+.produce-slider{
+display:flex;
+gap:1.1rem;
+overflow-x:auto;
+-webkit-overflow-scrolling:touch;
+scroll-snap-type:x proximity;
+padding:0.5rem 6vw 1rem;
+scrollbar-width:thin;
+scrollbar-color:var(--rust) transparent;
+}
+.produce-slider::-webkit-scrollbar{
+height:6px;
+}
+.produce-slider::-webkit-scrollbar-thumb{
+background:var(--rust);
+border-radius:3px;
+}
+.produce-item{
+flex:0 0 auto;
+width:84px;
+scroll-snap-align:start;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+.produce-item img{
+width:100%;
+aspect-ratio:1/1;
+border-radius:16px;
+object-fit:cover;
+display:block;
+}
+.produce-item span{
+margin-top:0.5rem;
+font-size:0.74rem;
+font-weight:600;
+color:var(--maroon);
+line-height:1.2;
+}
+@media(min-width:700px){
+.produce-item{width:104px;}
+.produce-item span{font-size:0.82rem;}
+}
+
 @media (max-width:860px){
 .science-facts{grid-template-columns:1fr 1fr;}
 }
@@ -1159,6 +1209,45 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 </section>
 
+
+<section class="produce-slider-section">
+<div class="produce-slider">
+<div class="produce-item"><img src="images/produce/apple.png" alt="Apfel" loading="lazy" width="360" height="360"><span>Apfel</span></div>
+<div class="produce-item"><img src="images/produce/carrot.png" alt="Karotte" loading="lazy" width="360" height="360"><span>Karotte</span></div>
+<div class="produce-item"><img src="images/produce/mulberry.png" alt="Maulbeere" loading="lazy" width="360" height="360"><span>Maulbeere</span></div>
+<div class="produce-item"><img src="images/produce/pineapple.png" alt="Ananas" loading="lazy" width="360" height="360"><span>Ananas</span></div>
+<div class="produce-item"><img src="images/produce/radish.png" alt="Radieschen" loading="lazy" width="360" height="360"><span>Radieschen</span></div>
+<div class="produce-item"><img src="images/produce/lemon.png" alt="Zitrone" loading="lazy" width="360" height="360"><span>Zitrone</span></div>
+<div class="produce-item"><img src="images/produce/orange.png" alt="Orange" loading="lazy" width="360" height="360"><span>Orange</span></div>
+<div class="produce-item"><img src="images/produce/beetroot.png" alt="Rote Bete" loading="lazy" width="360" height="360"><span>Rote Bete</span></div>
+<div class="produce-item"><img src="images/produce/plum.png" alt="Pflaume" loading="lazy" width="360" height="360"><span>Pflaume</span></div>
+<div class="produce-item"><img src="images/produce/prune.png" alt="Trockenpflaume" loading="lazy" width="360" height="360"><span>Trockenpflaume</span></div>
+<div class="produce-item"><img src="images/produce/passionfruit.png" alt="Passionsfrucht" loading="lazy" width="360" height="360"><span>Passionsfrucht</span></div>
+<div class="produce-item"><img src="images/produce/watermelon.png" alt="Wassermelone" loading="lazy" width="360" height="360"><span>Wassermelone</span></div>
+<div class="produce-item"><img src="images/produce/wolfberry.png" alt="Goji-Beere" loading="lazy" width="360" height="360"><span>Goji-Beere</span></div>
+<div class="produce-item"><img src="images/produce/acerola.png" alt="Acerola" loading="lazy" width="360" height="360"><span>Acerola</span></div>
+<div class="produce-item"><img src="images/produce/asparagus.png" alt="Spargel" loading="lazy" width="360" height="360"><span>Spargel</span></div>
+<div class="produce-item"><img src="images/produce/banana.png" alt="Banane" loading="lazy" width="360" height="360"><span>Banane</span></div>
+<div class="produce-item"><img src="images/produce/bilberry.png" alt="Heidelbeere" loading="lazy" width="360" height="360"><span>Heidelbeere</span></div>
+<div class="produce-item"><img src="images/produce/blackcurrant.png" alt="Schwarze Johannisbeere" loading="lazy" width="360" height="360"><span>Schwarze Johannisbeere</span></div>
+<div class="produce-item"><img src="images/produce/broccoli.png" alt="Brokkoli" loading="lazy" width="360" height="360"><span>Brokkoli</span></div>
+<div class="produce-item"><img src="images/produce/cherry.png" alt="Kirsche" loading="lazy" width="360" height="360"><span>Kirsche</span></div>
+<div class="produce-item"><img src="images/produce/chokeberry.png" alt="Aronia-Beere" loading="lazy" width="360" height="360"><span>Aronia-Beere</span></div>
+<div class="produce-item"><img src="images/produce/cranberry.png" alt="Cranberry" loading="lazy" width="360" height="360"><span>Cranberry</span></div>
+<div class="produce-item"><img src="images/produce/gooseberry.png" alt="Stachelbeere" loading="lazy" width="360" height="360"><span>Stachelbeere</span></div>
+<div class="produce-item"><img src="images/produce/grape.png" alt="Weintraube" loading="lazy" width="360" height="360"><span>Weintraube</span></div>
+<div class="produce-item"><img src="images/produce/grapefruit.png" alt="Grapefruit" loading="lazy" width="360" height="360"><span>Grapefruit</span></div>
+<div class="produce-item"><img src="images/produce/jujube.png" alt="Jujube" loading="lazy" width="360" height="360"><span>Jujube</span></div>
+<div class="produce-item"><img src="images/produce/lychee.png" alt="Litschi" loading="lazy" width="360" height="360"><span>Litschi</span></div>
+<div class="produce-item"><img src="images/produce/melon.png" alt="Melone" loading="lazy" width="360" height="360"><span>Melone</span></div>
+<div class="produce-item"><img src="images/produce/papaya.png" alt="Papaya" loading="lazy" width="360" height="360"><span>Papaya</span></div>
+<div class="produce-item"><img src="images/produce/peach.png" alt="Pfirsich" loading="lazy" width="360" height="360"><span>Pfirsich</span></div>
+<div class="produce-item"><img src="images/produce/pomegranate.png" alt="Granatapfel" loading="lazy" width="360" height="360"><span>Granatapfel</span></div>
+<div class="produce-item"><img src="images/produce/raspberry.png" alt="Himbeere" loading="lazy" width="360" height="360"><span>Himbeere</span></div>
+<div class="produce-item"><img src="images/produce/strawberry.png" alt="Erdbeere" loading="lazy" width="360" height="360"><span>Erdbeere</span></div>
+<div class="produce-item"><img src="images/produce/tomato.png" alt="Tomate" loading="lazy" width="360" height="360"><span>Tomate</span></div>
+</div>
+</section>
 <section class="science-section" id="wissenschaft">
 <div class="science-inner">
 <div class="science-head">
