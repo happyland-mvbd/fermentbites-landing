@@ -1411,7 +1411,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 <div class="waitlist-product">
 <img src="images/jar-with-bites.png" alt="FERMENTBITES Dose" class="waitlist-product-img">
 <div class="waitlist-price-card">
-<div class="waitlist-price-row"><span class="waitlist-price-amount">59,90&nbsp;€</span><span class="waitlist-price-unit">/ Dose</span></div>
+<div class="waitlist-price-row"><span class="waitlist-price-original" id="waitlist-price-original" hidden></span><span class="waitlist-price-amount" id="waitlist-price-amount">59,90&nbsp;€</span><span class="waitlist-price-unit" id="waitlist-price-unit">/ Dose</span></div>
 <p class="waitlist-price-detail">60 Bites &middot; 1-Monats-Routine &middot; inkl. MwSt., zzgl. Versand &middot; 2 Bites pro Tag &middot; mindestens 6 Monate haltbar</p>
 </div>
 <a href="mailto:support@fermentbites.com" class="waitlist-contact-link">Du hast Fragen? Wir sind für Dich da</a>
@@ -1470,7 +1470,6 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 </span>
 </label>
 <p class="waitlist-flavor-hint" id="waitlist-flavor-hint">Wähle eine oder beide Sorten und die gewünschte Stückzahl &ndash; max. 2&nbsp;Dosen pro Sorte, insgesamt max. 4&nbsp;Dosen. Ab 2&nbsp;Dosen insgesamt erhältst du 10%&nbsp;Rabatt auf den Gesamtpreis.</p>
-<p class="waitlist-flavor-total" id="waitlist-flavor-total" hidden></p>
 </div>
 
 <form class="signup" id="signup-form">
@@ -1534,6 +1533,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 .waitlist-price-row{display:flex;align-items:baseline;gap:0.4rem;margin-bottom:0.5rem;}
 .waitlist-price-amount{font-family:'MaisonNeueBook',sans-serif;font-size:1.6rem;font-weight:700;color:var(--maroon);}
 .waitlist-price-unit{font-size:0.85rem;color:#6b5a4a;}
+.waitlist-price-original{font-size:0.85rem;color:#6b5a4a;text-decoration:line-through;margin-right:0.4rem;}
 .waitlist-price-detail{font-size:0.82rem;color:#6b5a4a;line-height:1.5;margin:0 0 0.7rem;}
 .waitlist-contact-link{display:block;margin-top:0.6rem;font-size:0.82rem;color:#6b5a4a;text-decoration:underline;}
 .waitlist-contact-link:hover{color:var(--ink);}
@@ -1582,7 +1582,11 @@ var nonBinding = document.getElementById('waitlist-nonbinding');
 var flavorChoice = document.getElementById('waitlist-flavor-choice');
 var flavorInputs = document.querySelectorAll('input[name="flavor"]');
 var qtySelects = { 'Himbeere': document.getElementById('flavor-himbeere-qty'), 'Citrus': document.getElementById('flavor-citrus-qty') };
-var flavorTotalEl = document.getElementById('waitlist-flavor-total');
+var priceAmountEl = document.getElementById('waitlist-price-amount');
+var priceUnitEl = document.getElementById('waitlist-price-unit');
+var priceOriginalEl = document.getElementById('waitlist-price-original');
+var DEFAULT_PRICE_TEXT = priceAmountEl ? priceAmountEl.textContent : '';
+var DEFAULT_UNIT_TEXT = priceUnitEl ? priceUnitEl.textContent : '';
 var UNIT_PRICE = 59.90;
 var DISCOUNT_RATE = 0.10;
 function getQty(flavor){
@@ -1600,17 +1604,28 @@ return getQty('Himbeere') + getQty('Citrus');
 function formatPrice(n){
 return n.toFixed(2).replace('.', ',') + ' €';
 }
-function updatePriceDisplay(){
+function updatePriceCard(){
 var totalQty = getTotalQty();
-if(!flavorTotalEl) return;
-if(totalQty === 0){ flavorTotalEl.hidden = true; return; }
+if(!priceAmountEl) return;
+if(totalQty === 0){
+priceAmountEl.textContent = DEFAULT_PRICE_TEXT;
+if(priceUnitEl) priceUnitEl.textContent = DEFAULT_UNIT_TEXT;
+if(priceOriginalEl) priceOriginalEl.hidden = true;
+return;
+}
 var subtotal = totalQty * UNIT_PRICE;
 var discounted = totalQty >= 2;
 var total = discounted ? subtotal * (1 - DISCOUNT_RATE) : subtotal;
-var text = totalQty + ' Dose' + (totalQty > 1 ? 'n' : '') + ' ausgewählt – ' + formatPrice(total);
-if(discounted){ text += ' (10% Rabatt bereits enthalten)'; }
-flavorTotalEl.textContent = text;
-flavorTotalEl.hidden = false;
+priceAmountEl.textContent = formatPrice(total);
+if(priceUnitEl) priceUnitEl.textContent = 'für ' + totalQty + ' Dose' + (totalQty > 1 ? 'n' : '');
+if(priceOriginalEl){
+if(discounted){
+priceOriginalEl.textContent = formatPrice(subtotal);
+priceOriginalEl.hidden = false;
+} else {
+priceOriginalEl.hidden = true;
+}
+}
 }
 var msg = document.getElementById('signup-msg');
 var STOCK_DEFAULTS = { 'Himbeere': 481, 'Citrus': 469 };
@@ -1642,7 +1657,7 @@ flavorChoice.hidden = false;
 var totalQty = getTotalQty();
 submitBtn.disabled = totalQty === 0;
 submitBtn.textContent = totalQty > 0 ? ('Ja, meine Dose' + (totalQty > 1 ? 'n' : '') + ' vormerken') : 'Bitte wähle eine Sorte';
-updatePriceDisplay();
+updatePriceCard();
 nonBinding.hidden = false;
 } else if(selected === 'newsletter'){
 flavorChoice.hidden = true;
