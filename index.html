@@ -1446,6 +1446,13 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 <span class="waitlist-flavor-card">
 <span class="waitlist-flavor-title">🍓 Himbeere</span>
 <span class="waitlist-flavor-stock"><strong id="waitlist-remaining-himbeere">481</strong> von 500 Dosen verfügbar</span>
+<span class="waitlist-flavor-qty-row">
+<label for="flavor-himbeere-qty">Anzahl</label>
+<select name="flavor_himbeere_qty" id="flavor-himbeere-qty" class="waitlist-flavor-qty" data-flavor="Himbeere">
+<option value="1">1 Dose</option>
+<option value="2">2 Dosen</option>
+</select>
+</span>
 </span>
 </label>
 <label class="waitlist-flavor-option">
@@ -1453,9 +1460,17 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 <span class="waitlist-flavor-card">
 <span class="waitlist-flavor-title">🍋 Citrus</span>
 <span class="waitlist-flavor-stock"><strong id="waitlist-remaining-citrus">469</strong> von 500 Dosen verfügbar</span>
+<span class="waitlist-flavor-qty-row">
+<label for="flavor-citrus-qty">Anzahl</label>
+<select name="flavor_citrus_qty" id="flavor-citrus-qty" class="waitlist-flavor-qty" data-flavor="Citrus">
+<option value="1">1 Dose</option>
+<option value="2">2 Dosen</option>
+</select>
+</span>
 </span>
 </label>
-<p class="waitlist-flavor-hint" id="waitlist-flavor-hint">Wähle eine Sorte oder beide Sorten &ndash; bei beiden reservierst du dir automatisch je eine Dose (also 2&nbsp;Dosen insgesamt).</p>
+<p class="waitlist-flavor-hint" id="waitlist-flavor-hint">Wähle eine oder beide Sorten und die gewünschte Stückzahl &ndash; max. 2&nbsp;Dosen pro Sorte, insgesamt max. 4&nbsp;Dosen. Ab 2&nbsp;Dosen insgesamt erhältst du 10%&nbsp;Rabatt auf den Gesamtpreis.</p>
+<p class="waitlist-flavor-total" id="waitlist-flavor-total" hidden></p>
 </div>
 
 <form class="signup" id="signup-form">
@@ -1544,6 +1559,12 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 .waitlist-flavor-option input:checked + .waitlist-flavor-card{border-color:var(--rust);background:rgba(154,58,34,0.07);}
 .waitlist-flavor-option input:focus-visible + .waitlist-flavor-card{outline:2px solid var(--rust);outline-offset:2px;}
 .waitlist-flavor-hint{font-size:0.82rem;color:#6b5a4a;line-height:1.45;margin:0.2rem 0 0;}
+.waitlist-flavor-qty-row{display:flex;align-items:center;gap:0.5rem;margin-top:0.4rem;}
+.waitlist-flavor-option input:not(:checked) ~ .waitlist-flavor-card .waitlist-flavor-qty-row{display:none;}
+.waitlist-flavor-qty-row label{font-size:0.78rem;color:#6b5a4a;}
+.waitlist-flavor-qty{font:inherit;font-size:0.82rem;border:1px solid rgba(94,36,24,0.3);border-radius:8px;padding:0.2rem 0.5rem;background:var(--cream);color:var(--maroon);}
+.waitlist-flavor-total{font-size:0.85rem;color:var(--maroon);font-weight:700;margin:0.5rem 0 0;background:rgba(154,58,34,0.08);border-radius:10px;padding:0.55rem 0.75rem;}
+.waitlist-flavor-total[hidden]{display:none;}
 .waitlist-nonbinding{margin-top:0.9rem;font-size:0.82rem;color:#6b5a4a;line-height:1.5;background:rgba(94,36,24,0.05);border-radius:10px;padding:0.7rem 0.85rem;}
 @media (max-width:760px){.waitlist-layout{grid-template-columns:1fr;max-width:420px;}.waitlist-product{position:static;}}
 </style>
@@ -1560,6 +1581,37 @@ var submitBtn = document.getElementById('signup-submit');
 var nonBinding = document.getElementById('waitlist-nonbinding');
 var flavorChoice = document.getElementById('waitlist-flavor-choice');
 var flavorInputs = document.querySelectorAll('input[name="flavor"]');
+var qtySelects = { 'Himbeere': document.getElementById('flavor-himbeere-qty'), 'Citrus': document.getElementById('flavor-citrus-qty') };
+var flavorTotalEl = document.getElementById('waitlist-flavor-total');
+var UNIT_PRICE = 59.90;
+var DISCOUNT_RATE = 0.10;
+function getQty(flavor){
+var input = document.getElementById('flavor-' + flavor.toLowerCase());
+var sel = qtySelects[flavor];
+if(!input || !input.checked) return 0;
+var n = sel ? parseInt(sel.value, 10) : 1;
+if(!n || n < 1) n = 1;
+if(n > 2) n = 2;
+return n;
+}
+function getTotalQty(){
+return getQty('Himbeere') + getQty('Citrus');
+}
+function formatPrice(n){
+return n.toFixed(2).replace('.', ',') + ' €';
+}
+function updatePriceDisplay(){
+var totalQty = getTotalQty();
+if(!flavorTotalEl) return;
+if(totalQty === 0){ flavorTotalEl.hidden = true; return; }
+var subtotal = totalQty * UNIT_PRICE;
+var discounted = totalQty >= 2;
+var total = discounted ? subtotal * (1 - DISCOUNT_RATE) : subtotal;
+var text = totalQty + ' Dose' + (totalQty > 1 ? 'n' : '') + ' ausgewählt – ' + formatPrice(total);
+if(discounted){ text += ' (10% Rabatt bereits enthalten)'; }
+flavorTotalEl.textContent = text;
+flavorTotalEl.hidden = false;
+}
 var msg = document.getElementById('signup-msg');
 var STOCK_DEFAULTS = { 'Himbeere': 481, 'Citrus': 469 };
 var stockEls = { 'Himbeere': document.getElementById('waitlist-remaining-himbeere'), 'Citrus': document.getElementById('waitlist-remaining-citrus') };
@@ -1587,10 +1639,10 @@ var selected = null;
 radios.forEach(function(r){ if(r.checked) selected = r.value; });
 if(selected === 'waitlist'){
 flavorChoice.hidden = false;
-var anyFlavor = false;
-flavorInputs.forEach(function(f){ if(f.checked) anyFlavor = true; });
-submitBtn.disabled = !anyFlavor;
-submitBtn.textContent = anyFlavor ? 'Ja, meine Dose vormerken' : 'Bitte wähle eine Sorte';
+var totalQty = getTotalQty();
+submitBtn.disabled = totalQty === 0;
+submitBtn.textContent = totalQty > 0 ? ('Ja, meine Dose' + (totalQty > 1 ? 'n' : '') + ' vormerken') : 'Bitte wähle eine Sorte';
+updatePriceDisplay();
 nonBinding.hidden = false;
 } else if(selected === 'newsletter'){
 flavorChoice.hidden = true;
@@ -1606,6 +1658,7 @@ nonBinding.hidden = true;
 }
 radios.forEach(function(r){ r.addEventListener('change', updateChoiceUI); });
 flavorInputs.forEach(function(f){ f.addEventListener('change', updateChoiceUI); });
+Object.keys(qtySelects).forEach(function(k){ var el = qtySelects[k]; if(el) el.addEventListener('change', updateChoiceUI); });
 updateChoiceUI();
 form.addEventListener('submit', function(e){
 e.preventDefault();
@@ -1617,8 +1670,10 @@ var firstName = document.getElementById('f-vorname').value.trim();
 var lastName = document.getElementById('f-nachname').value.trim();
 var ageGroup = document.getElementById('f-altersgruppe').value;
 var plz = document.getElementById('f-plz').value.trim();
+var flavorQty = { 'Himbeere': getQty('Himbeere'), 'Citrus': getQty('Citrus') };
+var totalQty = flavorQty['Himbeere'] + flavorQty['Citrus'];
 var flavors = [];
-flavorInputs.forEach(function(f){ if(f.checked) flavors.push(f.value); });
+Object.keys(flavorQty).forEach(function(k){ if(flavorQty[k] > 0) flavors.push(k); });
 if(selected === 'waitlist' && flavors.length === 0){
 msg.textContent = 'Bitte wähle mindestens eine Sorte.';
 msg.className = 'form-msg error';
@@ -1656,8 +1711,9 @@ zip: plz,
 "Warteliste erste Charge": selected === 'waitlist'
 };
 if(selected === 'waitlist'){
-profileData["Sorten"] = flavors.join(', ');
-profileData["Anzahl Dosen"] = flavors.length;
+profileData["Sorten"] = flavors.map(function(k){ return k + " x" + flavorQty[k]; }).join(', ');
+profileData["Anzahl Dosen"] = totalQty;
+profileData["Rabatt 10%"] = totalQty >= 2;
 }
 window.klaviyo.identify(profileData);
 }
@@ -1676,10 +1732,10 @@ Promise.all(listIds.map(function(listId){
   var allOk = results.every(function(res){ return res.ok || res.status === 202; });
   if(allOk){
 msg.textContent = selected === 'waitlist'
-? 'Danke! Check gleich dein Postfach und bestätige deine Anmeldung – dann bist du auf der Warteliste (' + flavors.join(' & ') + ') und im Newsletter.'
+? 'Danke! Check gleich dein Postfach und bestätige deine Anmeldung – dann bist du auf der Warteliste (' + flavors.map(function(k){ return k + ' x' + flavorQty[k]; }).join(' & ') + ') und im Newsletter.'
 : 'Danke! Check gleich dein Postfach und bestätige deine Anmeldung.';
     msg.className = 'form-msg success';
-flavors.forEach(function(fl){ decrementStock(fl); });
+flavors.forEach(function(fl){ for(var i=0;i<flavorQty[fl];i++){ decrementStock(fl); } });
     form.reset();
     updateChoiceUI();
   } else {
