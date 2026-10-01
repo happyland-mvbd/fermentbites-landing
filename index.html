@@ -1657,7 +1657,10 @@ nonBinding.hidden = true;
 }
 }
 radios.forEach(function(r){ r.addEventListener('change', updateChoiceUI); });
-flavorInputs.forEach(function(f){ f.addEventListener('change', updateChoiceUI); });
+flavorInputs.forEach(function(f){ f.addEventListener('change', function(){
+if(f.checked){ var sel = qtySelects[f.value]; if(sel) sel.value = '1'; }
+updateChoiceUI();
+}); });
 Object.keys(qtySelects).forEach(function(k){ var el = qtySelects[k]; if(el) el.addEventListener('change', updateChoiceUI); });
 updateChoiceUI();
 form.addEventListener('submit', function(e){
