@@ -957,16 +957,24 @@ transition:background .15s ease, transform .15s ease;
 .inline-badge-btn:hover{background:var(--mustard-dark);transform:translateY(-1px);}
 .inline-badge-btn:focus-visible{outline:2px solid var(--mustard-dark);outline-offset:2px;}
 
+.fraunhofer-panel{
+padding:0.6rem 0.9rem 0.8rem;
+}
+.fraunhofer-panel[hidden]{
+display:none;
+}
 .fraunhofer-logo{
 display:block;
-max-width:240px;
-width:65%;
+max-width:70px;
+width:40%;
 height:auto;
-margin:0 0 1rem;
+margin:0 0 0.5rem;
 }
-#fraunhofer-modal p{
-font-size:1.3rem;
-line-height:1.6;
+.fraunhofer-panel p{
+font-size:0.78rem;
+line-height:1.45;
+margin:0;
+color:var(--maroon);
 }
 
 #cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:var(--ink);color:var(--cream);padding:20px 24px;box-shadow:0 -4px 24px rgba(0,0,0,0.25);transform:translateY(100%);opacity:0;pointer-events:none;transition:transform .3s ease, opacity .3s ease;}
@@ -1214,7 +1222,11 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 <span></span>
 </button>
 <nav class="hamburger-dropdown" id="hamburger-dropdown" hidden>
-<button type="button" class="hamburger-dropdown-item" data-modal="fraunhofer-modal">Unser Entwicklungspartner</button>
+<button type="button" class="hamburger-dropdown-item" id="fraunhofer-toggle" aria-expanded="false" aria-controls="fraunhofer-panel">Unser Entwicklungspartner</button>
+<div class="fraunhofer-panel" id="fraunhofer-panel" hidden>
+<img src="images/fraunhofer-logo.png" alt="Fraunhofer Institut IVV" class="fraunhofer-logo">
+<p>Gemeinsam mit dem Fraunhofer Institut IVV entwickeln wir jeden Bite – von der Rezeptur bis zur Prozessführung. Fraunhofer ist Europas größte Organisation für angewandte Forschung.</p>
+</div>
 </nav>
 </div>
 <div class="blob blob-1"></div>
@@ -2030,15 +2042,6 @@ Diese Website wird bei der united-domains GmbH, Gautinger Straße 10, 82319 Star
 </div>
 </div>
 
-<!-- ---------- FRAUNHOFER MODAL ---------- -->
-<div class="modal-overlay" id="fraunhofer-modal">
-<div class="modal">
-<button class="modal-close" data-close aria-label="Schließen">&times;</button>
-<img src="images/fraunhofer-logo.png" alt="Fraunhofer Institut IVV" class="fraunhofer-logo">
-<p>Gemeinsam mit dem Fraunhofer Institut IVV entwickeln wir jeden Bite – von der Rezeptur bis zur Prozessführung. Fraunhofer ist Europas größte Organisation für angewandte Forschung.</p>
-</div>
-</div>
-
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -2058,6 +2061,18 @@ overlay.querySelector('[data-close]').addEventListener('click', function(){
 overlay.classList.remove('open');
 });
 });
+
+// Fraunhofer inline panel
+(function(){
+var toggle = document.getElementById('fraunhofer-toggle');
+var panel = document.getElementById('fraunhofer-panel');
+if (!toggle || !panel) return;
+toggle.addEventListener('click', function(){
+var isOpen = !panel.hidden;
+panel.hidden = isOpen;
+toggle.setAttribute('aria-expanded', String(!isOpen));
+});
+})();
 
 // FAQ accordion
 document.querySelectorAll('.faq-question').forEach(function(btn){
